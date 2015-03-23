@@ -1,0 +1,22 @@
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo2\bin\Debug\Tutorial.exe.config
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo4\bin\Debug\Tutorial.exe.config
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo4\bin\Debug\Tutorial.exe
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo4\bin\Debug\Tutorial.pdb
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo4\bin\Debug\Mogre.xml
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo4\obj\x86\Debug\Tutorial.csprojResolveAssemblyReference.cache
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo4\obj\x86\Debug\Tutorial.exe
+C:\Users\Assunta\Google Drive Marco\Labs 2014\Demo4\obj\x86\Debug\Tutorial.pdb
+F:\Google Drive\Labs 2014\Demo4\bin\Debug\Tutorial.exe.config
+F:\Google Drive\Labs 2014\Demo4\obj\x86\Debug\Tutorial.exe
+F:\Google Drive\Labs 2014\Demo4\obj\x86\Debug\Tutorial.pdb
+F:\Google Drive\Labs 2014\Demo4\bin\Debug\Tutorial.exe
+F:\Google Drive\Labs 2014\Demo4\bin\Debug\Tutorial.pdb
+F:\Google Drive\Labs 2014\Demo4\bin\Debug\Mogre.xml
+F:\Google Drive\Labs 2014\Demo4\obj\x86\Debug\Tutorial.csprojResolveAssemblyReference.cache
+C:\Users\Hannah\Desktop\3DProgramming\Demo4\bin\Debug\Tutorial.exe.config
+C:\Users\Hannah\Desktop\3DProgramming\Demo4\obj\x86\Debug\Tutorial.exe
+C:\Users\Hannah\Desktop\3DProgramming\Demo4\obj\x86\Debug\Tutorial.pdb
+C:\Users\Hannah\Desktop\3DProgramming\Demo4\bin\Debug\Tutorial.exe
+C:\Users\Hannah\Desktop\3DProgramming\Demo4\bin\Debug\Tutorial.pdb
+C:\Users\Hannah\Desktop\3DProgramming\Demo4\bin\Debug\Mogre.xml
+C:\Users\Hannah\Desktop\3DProgramming\Demo4\obj\x86\Debug\Tutorial.csprojResolveAssemblyReference.cache
