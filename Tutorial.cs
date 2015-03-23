@@ -9,6 +9,7 @@ namespace RaceGame
 {
     class Tutorial : BaseApplication
     {
+        Environment environment;
         Player player;
         Enemies enemies;
 
@@ -31,9 +32,11 @@ namespace RaceGame
         protected override void CreateScene()
         {
             Vector3 pos = new Vector3(50, 0, 0);
-
             physics = new Physics();
 
+            mSceneMgr.ShadowTechnique = ShadowTechnique.SHADOWTYPE_STENCIL_MODULATIVE;
+
+            environment = new Environment(mSceneMgr, mWindow);
             player = new Player(mSceneMgr);
             enemies = new Enemies(mSceneMgr);
 
@@ -59,6 +62,10 @@ namespace RaceGame
         {
             //enemies.Model.DisposeModel();
             //player.Model.DisposeModel();
+            base.DestroyScene();
+            
+            cameraNode.DetachAllObjects();
+            cameraNode.Dispose();
 
 
             if (player != null)
@@ -71,8 +78,11 @@ namespace RaceGame
                 enemies.Model.DisposeModel();
             }
 
+            
+            environment.Dispose();
+
             physics.Dispose();
-            //base.DestroyScene();
+            
         }
  
         /// <summary>

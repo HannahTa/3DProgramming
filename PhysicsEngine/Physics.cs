@@ -38,10 +38,16 @@ namespace PhysicsEng
             // ***---> YOUR POSITION UPDATE IMPLEMENTATION HERE! <---***
             // newPos = ... ;
 
-            obj.updateResFor(newPos);		//Forces at next frame (access thorugh obj.ResForces)
+            newPos = obj.Position + (obj.Velocity * dt) + (dt * dt) * 0.5f * obj.InvMass * obj.ResForces;
+            // i+1 next frame. i this frame
+
+            //obj.ResForces = - newPos;
+            obj.UpdateResFor(newPos);		//Forces at next frame (access thorugh obj.ResForces)
 
             // ***---> YOUR VELOCITY UPDATE IMPLEMENTATION HERE! <---***
             // finalVel = ... ;
+
+            finalVel = obj.Velocity + (dt * 0.5f * obj.InvMass) * (oldResForces + obj.ResForces);
 
             return finalVel;
         }
@@ -52,8 +58,8 @@ namespace PhysicsEng
             // ***---> YOUR IMPULSE IMPLEMENTATION HERE! <---***
 			//impluse = ... ;
             
-            
-
+            impluse = - ( (obj.Restitution + 1) / ( obj.InvMass + obj1.InvMass ) ) * (obj.Velocity - obj1.Velocity);
+                          // 2 = restitution
 			return impluse;
         }
         #endregion *********************************************************************************************************

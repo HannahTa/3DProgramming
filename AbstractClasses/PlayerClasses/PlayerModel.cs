@@ -15,14 +15,15 @@ namespace RaceGame
         ModelElement playerCellsNode; //
         ModelElement playerSphereNode; //
 
-        //PhysObj physObj;
+        PhysObj physObj;
         SceneNode controlNode;
 
         public PlayerModel(SceneManager mSceneMgr)
         {
             this.mSceneMgr = mSceneMgr;
-            this.gameNode = playerMainNode.GameNode;
+            
             LoadModelElements();
+            this.gameNode = playerMainNode.GameNode;
             AssembleModel();
 
             //this.gameNode = playerMainNode.GameNode;
@@ -38,12 +39,13 @@ namespace RaceGame
 
             // Physics
             controlNode = mSceneMgr.CreateSceneNode();
-            controlNode.AddChild(this.gameNode);
-            mSceneMgr.RootSceneNode.AddChild(controlNode);
+            
 
             float radius = 10;
             controlNode.Position += radius * Vector3.UNIT_Y;
-            this.gameNode.Position -= radius * Vector3.UNIT_Y;
+            playerMainNode.GameNode.Position -= radius * Vector3.UNIT_Y;
+            playerCellsNode.GameNode.Position -= radius * Vector3.UNIT_Y;
+            playerSphereNode.GameNode.Position -= radius * Vector3.UNIT_Y;
 
             physObj = new PhysObj(radius, "Player", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;
@@ -61,11 +63,14 @@ namespace RaceGame
 
             //this.gameNode.AddChild(playerCellsNode.GameNode);
             
-            mSceneMgr.RootSceneNode.AddChild(playerMainNode.GameNode);
-            this.gameNode.AddChild(playerCellsNode.GameNode);
-            this.gameNode.AddChild(playerSphereNode.GameNode);
+            //mSceneMgr.RootSceneNode.AddChild(playerMainNode.GameNode);
+           // this.gameNode.AddChild(playerCellsNode.GameNode);
+            //this.gameNode.AddChild(playerSphereNode.GameNode);
 
-            
+            controlNode.AddChild(playerMainNode.GameNode);
+            controlNode.AddChild(playerCellsNode.GameNode);
+            controlNode.AddChild(playerSphereNode.GameNode);
+            mSceneMgr.RootSceneNode.AddChild(controlNode);
             
             //mSceneMgr.RootSceneNode.AddChild(playerCellsNode.GameNode);
             //mSceneMgr.RootSceneNode.AddChild(playerSphereNode.GameNode);
@@ -79,6 +84,10 @@ namespace RaceGame
             playerCellsNode.Dispose();
             playerSphereNode.Dispose();
             playerMainNode.Dispose(); // Main gets deleted last as that is the parent node
+
+            Physics.RemovePhysObj(physObj);
+            physObj = null;
+            
             //base.DisposeModel();
         }
     }

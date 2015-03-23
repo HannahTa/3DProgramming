@@ -34,6 +34,11 @@ namespace PhysicsEng
         {
             // Your Implementation here, force is inherited from the Force class as protected field
             // force = ... ;
+
+
+            //beight forse = -mass * gravity * direction of gravity
+            // Elasticity force
+            force = -this.mass * this.Gravity * Position;
         }
     }
 }
