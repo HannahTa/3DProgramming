@@ -38,20 +38,9 @@ namespace RaceGame
             playerSphereNode = new ModelElement(mSceneMgr, "Sphere.mesh");
 
             // Physics
-            controlNode = mSceneMgr.CreateSceneNode();
             
 
-            float radius = 10;
-            controlNode.Position += radius * Vector3.UNIT_Y;
-            playerMainNode.GameNode.Position -= radius * Vector3.UNIT_Y;
-            playerCellsNode.GameNode.Position -= radius * Vector3.UNIT_Y;
-            playerSphereNode.GameNode.Position -= radius * Vector3.UNIT_Y;
-
-            physObj = new PhysObj(radius, "Player", 0.1f, 0.7f, 0.3f);
-            physObj.SceneNode = controlNode;
-            physObj.Position = controlNode.Position;
-            physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            Physics.AddPhysObj(physObj);
+            
 
             //base.LoadModelElements();
         }
@@ -66,12 +55,25 @@ namespace RaceGame
             //mSceneMgr.RootSceneNode.AddChild(playerMainNode.GameNode);
            // this.gameNode.AddChild(playerCellsNode.GameNode);
             //this.gameNode.AddChild(playerSphereNode.GameNode);
+            controlNode = mSceneMgr.CreateSceneNode();
 
             controlNode.AddChild(playerMainNode.GameNode);
-            controlNode.AddChild(playerCellsNode.GameNode);
-            controlNode.AddChild(playerSphereNode.GameNode);
+            //controlNode.AddChild(playerCellsNode.GameNode);
+            //controlNode.AddChild(playerSphereNode.GameNode);
             mSceneMgr.RootSceneNode.AddChild(controlNode);
             
+            float radius = 10;
+            controlNode.Position += radius * Vector3.UNIT_Y;
+            playerMainNode.GameNode.Position -= radius * Vector3.UNIT_Y;
+            //playerCellsNode.GameNode.Position -= radius * Vector3.UNIT_Y;
+            //playerSphereNode.GameNode.Position -= radius * Vector3.UNIT_Y;
+
+            physObj = new PhysObj(radius, "Main", 0.1f, 0.7f, 0.3f);
+            physObj.SceneNode = controlNode;
+            physObj.Position = controlNode.Position;
+            physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            Physics.AddPhysObj(physObj);
+
             //mSceneMgr.RootSceneNode.AddChild(playerCellsNode.GameNode);
             //mSceneMgr.RootSceneNode.AddChild(playerSphereNode.GameNode);
             

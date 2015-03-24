@@ -7,7 +7,12 @@ namespace RaceGame
 {
     class PlayerStats : CharacterStats
     {
-        Stat score;
+        private Stat score;
+
+        public Stat Score
+        {
+            get { return score; }
+        }
 
         protected override void InitStats()
         {

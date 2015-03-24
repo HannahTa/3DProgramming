@@ -9,6 +9,8 @@ namespace RaceGame
 {
     class Tutorial : BaseApplication
     {
+        GameInterface gameHMD;
+
         Environment environment;
         Player player;
         Enemies enemies;
@@ -18,8 +20,6 @@ namespace RaceGame
         static InputsManager inputsManager = InputsManager.Instance;
 
         Physics physics;
-
-        //ManualObject manObj;
 
         public static void Main()
         {
@@ -31,8 +31,11 @@ namespace RaceGame
         /// </summary>
         protected override void CreateScene()
         {
-            Vector3 pos = new Vector3(50, 0, 0);
+            Vector3 pos = new Vector3(50, 100, 0);
             physics = new Physics();
+
+            PlayerStats playerStats = new PlayerStats();
+            gameHMD = new GameInterface(mSceneMgr, mWindow, playerStats);
 
             mSceneMgr.ShadowTechnique = ShadowTechnique.SHADOWTYPE_STENCIL_MODULATIVE;
 
@@ -40,19 +43,29 @@ namespace RaceGame
             player = new Player(mSceneMgr);
             enemies = new Enemies(mSceneMgr);
 
-            enemies.Model.SetPosition(pos);
-
             cameraNode = mSceneMgr.CreateSceneNode();
             cameraNode.AttachObject(mCamera);
-            
-            player.Model.GameNode.AddChild(cameraNode); // Camera on player
+            //player.Model.GameNode.AddChild(cameraNode); // Camera on player
 
             inputsManager.PlayerController = (PlayerController)player.Controller;
-
-            // Did not work
-            //player.Controller = (PlayerController)player.Controller; // I think..
             
+            enemies.Model.SetPosition(pos);
+            //player.Model.SetPosition(pos);
+
             physics.StartSimTimer();    // Must be the last method in create
+        }
+
+        /// <summary>
+        /// This method update the scene after a frame has finished rendering
+        /// </summary>
+        /// <param name="evt"></param>
+        protected override void UpdateScene(FrameEvent evt)
+        {
+            base.UpdateScene(evt);
+            physics.UpdatePhysics(0.01f);
+            gameHMD.Update(evt);
+            player.Update(evt);
+            mCamera.LookAt(player.Position);
         }
 
         /// <summary>
@@ -67,7 +80,6 @@ namespace RaceGame
             cameraNode.DetachAllObjects();
             cameraNode.Dispose();
 
-
             if (player != null)
             {
                 player.Model.DisposeModel();
@@ -78,11 +90,10 @@ namespace RaceGame
                 enemies.Model.DisposeModel();
             }
 
-            
             environment.Dispose();
 
+            gameHMD.Dispose();
             physics.Dispose();
-            
         }
  
         /// <summary>
@@ -111,18 +122,6 @@ namespace RaceGame
             Viewport viewport = mWindow.AddViewport(mCamera);
             viewport.BackgroundColour = ColourValue.Black;
             mCamera.AspectRatio = viewport.ActualWidth / viewport.ActualHeight;
-        }
-
-        /// <summary>
-        /// This method update the scene after a frame has finished rendering
-        /// </summary>
-        /// <param name="evt"></param>
-        protected override void UpdateScene(FrameEvent evt)
-        {
-            physics.UpdatePhysics(0.01f);
-            player.Update(evt);
-            mCamera.LookAt(player.Position);
-            base.UpdateScene(evt);
         }
 
         /// <summary>

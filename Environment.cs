@@ -27,7 +27,7 @@ namespace RaceGame
         private void Load()
         {
             SetLights();
-            //SetFog();
+            SetFog();
 
             SetSky();
             ground = new Ground(mSceneMgr);

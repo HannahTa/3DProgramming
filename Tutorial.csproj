@@ -73,7 +73,9 @@
     <Compile Include="AbstractClasses\Guns\Gun.cs" />
     <Compile Include="AbstractClasses\Guns\Projectile.cs" />
     <Compile Include="Environment.cs" />
+    <Compile Include="GameInterface.cs" />
     <Compile Include="Ground.cs" />
+    <Compile Include="HMD.cs" />
     <Compile Include="InputsManager.cs" />
     <Compile Include="ModelElement.cs" />
     <Compile Include="PhysicsEngine\Contacts.cs" />
