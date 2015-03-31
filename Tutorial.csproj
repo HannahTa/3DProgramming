@@ -65,6 +65,7 @@
     <Compile Include="AbstractClasses\GameElement.cs" />
     <Compile Include="AbstractClasses\Guns\AllProjectile\SlowProjectile.cs" />
     <Compile Include="AbstractClasses\Guns\AllGuns\SlowGun.cs" />
+    <Compile Include="AbstractClasses\Guns\Armoury.cs" />
     <Compile Include="AbstractClasses\MovableElement.cs" />
     <Compile Include="AbstractClasses\PlayerClasses\Player.cs" />
     <Compile Include="AbstractClasses\PlayerClasses\PlayerController.cs" />

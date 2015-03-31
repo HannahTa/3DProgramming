@@ -19,7 +19,7 @@ namespace RaceGame
         // true, use the method increase from the score object to change the score and add
         // a Dispose() call before the break statement
 
-        PhysObj physObj;
+        //PhysObj physObj;
         SceneNode controlNode;
 
         //ModelElement midGemNode1;
@@ -48,7 +48,7 @@ namespace RaceGame
             mSceneMgr.RootSceneNode.AddChild(controlNode);
             
             // Physics
-            float radius = 10;
+            float radius = 1;
             controlNode.Position += radius * Vector3.UNIT_Y;
             midGemNode.Position += radius * Vector3.UNIT_Y;
 

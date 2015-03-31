@@ -10,7 +10,7 @@ namespace RaceGame
 {
     class EnemiesModel : CharacterModel
     {
-        PhysObj physObj;
+        //PhysObj physObj;
         SceneNode controlNode;
 
         ModelElement enemyNode1;
@@ -20,7 +20,9 @@ namespace RaceGame
             this.mSceneMgr = mSceneMgr;
             LoadModelElements();
             AssembleModel();
-            this.gameNode = enemyNode1.GameNode;
+            this.gameNode = enemyNode1.GameNode; //controlNode; //
+            this.SetPosition(new Vector3(0, 0, 100));
+            
         }
 
         protected override void LoadModelElements()
@@ -40,13 +42,13 @@ namespace RaceGame
             mSceneMgr.RootSceneNode.AddChild(controlNode);
 
             // Physics
-            float radius = 10;
+            float radius = 1;
             controlNode.Position += radius * Vector3.UNIT_Y;
             enemyNode1.GameNode.Position += radius * Vector3.UNIT_Y;
 
             physObj = new PhysObj(radius, "Robot", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;
-            physObj.Position = controlNode.Position;
+            //physObj.Position = controlNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             Physics.AddPhysObj(physObj);
 

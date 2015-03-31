@@ -66,10 +66,11 @@ namespace RaceGame
             inputsManager.PlayerController = (PlayerController)player.Controller;
             
             // -Positions-
-            enemies.Model.SetPosition(pos);
-            player.Model.SetPosition(pos);
-            midGem.SetPosition(new Vector3(-50, 150, 0));
-            doubleScore.SetPosition(new Vector3(100, 0, 0));
+            //enemies.Model.SetPosition(pos);
+            //player.Model.SetPosition(pos);
+            
+            //midGem.SetPosition(new Vector3(-50, 150, 0));
+            //doubleScore.SetPosition(new Vector3(100, 0, 0));
 
             // -Start timer-
             physics.StartSimTimer();    // Must be the last method in create

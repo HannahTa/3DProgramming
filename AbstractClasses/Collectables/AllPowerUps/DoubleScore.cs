@@ -9,7 +9,7 @@ namespace RaceGame
 {
     class DoubleScore : PowerUp
     {
-        PhysObj physObj;
+        //PhysObj physObj;
         SceneNode controlNode;
 
         //ModelElement midGemNode1;
@@ -43,7 +43,7 @@ namespace RaceGame
             mSceneMgr.RootSceneNode.AddChild(controlNode);
 
             // Physics
-            float radius = 10;
+            float radius = 1;
             controlNode.Position += radius * Vector3.UNIT_Y;
             doubleScoreNode.Position += radius * Vector3.UNIT_Y;
 

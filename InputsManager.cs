@@ -99,9 +99,9 @@ namespace RaceGame
             //}
             
             //player.Move(displacements); //UNCOMMENT THIS!!
-            
-            
 
+
+            //mMouse.MouseMoved .MouseMoved(MOIS.MouseButtonID.MB_Left)
             if (mMouse.MouseState.ButtonDown(MOIS.MouseButtonID.MB_Left))
             {
                 angles.y = mMouse.MouseState.X.rel;

@@ -15,7 +15,6 @@ namespace RaceGame
         ModelElement playerCellsNode; //
         ModelElement playerSphereNode; //
 
-        PhysObj physObj;
         SceneNode controlNode;
 
         public PlayerModel(SceneManager mSceneMgr)
@@ -23,8 +22,11 @@ namespace RaceGame
             this.mSceneMgr = mSceneMgr;
             
             LoadModelElements();
+            
             AssembleModel();
-            this.gameNode = playerMainNode.GameNode;
+            this.gameNode = playerMainNode.GameNode;//controlNode;
+
+            //this.SetPosition(new Vector3(-50, 100, 0));
             //this.gameNode = playerMainNode.GameNode;
         }
 
@@ -43,33 +45,18 @@ namespace RaceGame
         {
             // Attach and assemble model
             //this.gameNode = playerMainNode.GameNode;
-
-            //this.gameNode.AddChild(playerCellsNode.GameNode);
             
-            //mSceneMgr.RootSceneNode.AddChild(playerMainNode.GameNode);
-           // this.gameNode.AddChild(playerCellsNode.GameNode);
-            //this.gameNode.AddChild(playerSphereNode.GameNode);
             controlNode = mSceneMgr.CreateSceneNode();
-
             controlNode.AddChild(playerMainNode.GameNode);
-            //controlNode.AddChild(playerCellsNode.GameNode);
-            //controlNode.AddChild(playerSphereNode.GameNode);
             mSceneMgr.RootSceneNode.AddChild(controlNode);
             
-            float radius = 10;
-            controlNode.Position += radius * Vector3.UNIT_Y;
-            playerMainNode.GameNode.Position -= radius * Vector3.UNIT_Y;
-            //playerCellsNode.GameNode.Position -= radius * Vector3.UNIT_Y;
-            //playerSphereNode.GameNode.Position -= radius * Vector3.UNIT_Y;
+            float radius = 1;
 
             physObj = new PhysObj(radius, "Main", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;
-            physObj.Position = controlNode.Position;
+            //physObj.Position = controlNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             Physics.AddPhysObj(physObj);
-
-            //mSceneMgr.RootSceneNode.AddChild(playerCellsNode.GameNode);
-            //mSceneMgr.RootSceneNode.AddChild(playerSphereNode.GameNode);
             
             //base.AssembleModel();
         }

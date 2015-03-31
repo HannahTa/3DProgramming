@@ -25,7 +25,7 @@ namespace RaceGame
 
         //    // Initialize the gameNode here, scale it by 1.5f using the Scale funtion, and add as its child the gameNode contained in the Gun object.
         //    // Finally attach the gameNode to the sceneGraph.
-
+        
         //   // Here goes the link to the physics engine
         //   // (ignore until week 8) ...
         //}
