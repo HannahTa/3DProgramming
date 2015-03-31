@@ -46,6 +46,7 @@ namespace RaceGame
 
             physObj = new PhysObj(radius, "Robot", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;
+            physObj.Position = controlNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             Physics.AddPhysObj(physObj);
 

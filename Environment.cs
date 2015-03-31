@@ -1,21 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Mogre;
 using PhysicsEng;
 
 namespace RaceGame
 {
+    /// <summary>
+    /// This class implements the environment
+    /// </summary>
     class Environment
     {
-        Light light;
+        #region As in Demo 11
+        Light light;                        // This field will contain a reference of a light
 
-        SceneManager mSceneMgr;
-        RenderWindow mWindow;
+        SceneManager mSceneMgr;             // This field will contain a reference of the scene manages
+        RenderWindow mWindow;               // This field will contain a reference to the rendering window
 
-        Ground ground;
+        Ground ground;                      // This field will contain an istance of the ground object
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="mSceneMgr">A reference to the scene manager</param>
         public Environment(SceneManager mSceneMgr, RenderWindow mWindow)
         {
             this.mSceneMgr = mSceneMgr;
@@ -23,23 +28,36 @@ namespace RaceGame
 
             Load();                                 // This method loads  the environment
         }
-
+        #endregion
+        
+        /// <summary>
+        /// This method loads the environment
+        /// </summary>
         private void Load()
         {
+            #region As in Demo 11
             SetLights();
             SetFog();
 
             SetSky();
             ground = new Ground(mSceneMgr);
+            #endregion
 
             Physics.AddBoundary(ground.Plane);
         }
 
+        #region As in Demo 11
+        /// <summary>
+        /// This method dispose of any object instanciated in this class
+        /// </summary>
         public void Dispose()
         {
             ground.Dispose();
         }
-
+        
+        /// <summary>
+        /// This method sets the sky in the environment
+        /// </summary>
         private void SetSky()
         {
             //mSceneMgr.SetSkyDome(true, "Sky", 1f, 10, 500, true);
@@ -50,6 +68,9 @@ namespace RaceGame
             //mSceneMgr.SetSkyBox(true, "SkyBox", 10, true);
         }
 
+        /// <summary>
+        /// This method sets the fog in the environment
+        /// </summary>
         private void SetFog()
         {
             ColourValue fadeColour = new ColourValue(0.9f, 0.9f, 1f);
@@ -57,10 +78,13 @@ namespace RaceGame
 
             //mSceneMgr.SetFog(FogMode.FOG_EXP, fadeColour, 0.001f);
             //mSceneMgr.SetFog(FogMode.FOG_EXP2, fadeColour, 0.0015f);
-
+            
             mWindow.GetViewport(0).BackgroundColour = fadeColour;
         }
-
+        
+        /// <summary>
+        /// This method sets the lights in the environment
+        /// </summary>
         private void SetLights()
         {
             mSceneMgr.AmbientLight = new ColourValue(0.3f, 0.3f, 0.3f);                 // Set the ambient light in the scene
@@ -74,7 +98,7 @@ namespace RaceGame
             light.Position = new Vector3(0, 100, 0);                                    // Sets the position of the light
 
             //light.Type = Light.LightTypes.LT_POINT;                                   // Sets the light to be a point light
-
+            
             //light.Type = Light.LightTypes.LT_SPOTLIGHT;                               // Sets the light to be a spot light
             //light.SetSpotlightRange(Mogre.Math.PI / 4, Mogre.Math.PI / 2, 0.001f);    // Sets the spot light parametes
 
@@ -85,5 +109,6 @@ namespace RaceGame
 
             //light.SetAttenuation(range, constantAttenuation, linearAttenuation, quadraticAttenuation); // Not applicable to directional ligths
         }
+        #endregion
     }
 }

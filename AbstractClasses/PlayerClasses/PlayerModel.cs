@@ -23,9 +23,8 @@ namespace RaceGame
             this.mSceneMgr = mSceneMgr;
             
             LoadModelElements();
-            this.gameNode = playerMainNode.GameNode;
             AssembleModel();
-
+            this.gameNode = playerMainNode.GameNode;
             //this.gameNode = playerMainNode.GameNode;
         }
 
@@ -36,11 +35,6 @@ namespace RaceGame
             playerMainNode = new ModelElement(mSceneMgr, "Main.mesh");
             playerCellsNode = new ModelElement(mSceneMgr, "PowerCells.mesh");
             playerSphereNode = new ModelElement(mSceneMgr, "Sphere.mesh");
-
-            // Physics
-            
-
-            
 
             //base.LoadModelElements();
         }

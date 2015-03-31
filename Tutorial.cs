@@ -15,6 +15,10 @@ namespace RaceGame
         Player player;
         Enemies enemies;
 
+        Score stat;
+        MidGem midGem;
+        DoubleScore doubleScore;
+
         SceneNode cameraNode;
 
         static InputsManager inputsManager = InputsManager.Instance;
@@ -31,27 +35,43 @@ namespace RaceGame
         /// </summary>
         protected override void CreateScene()
         {
-            Vector3 pos = new Vector3(50, 100, 0);
+            Vector3 pos = new Vector3(50, 50, 0);
             physics = new Physics();
 
+            // GUI
             PlayerStats playerStats = new PlayerStats();
             gameHMD = new GameInterface(mSceneMgr, mWindow, playerStats);
 
+            // Environment
             mSceneMgr.ShadowTechnique = ShadowTechnique.SHADOWTYPE_STENCIL_MODULATIVE;
-
             environment = new Environment(mSceneMgr, mWindow);
+            
+            // Player
             player = new Player(mSceneMgr);
+            
+            // Enemies
             enemies = new Enemies(mSceneMgr);
-
+            
+            // -Power-ups-
+            stat = new Score();
+            midGem = new MidGem(mSceneMgr , stat);
+            doubleScore = new DoubleScore(mSceneMgr);
+            
+            // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
             cameraNode.AttachObject(mCamera);
-            //player.Model.GameNode.AddChild(cameraNode); // Camera on player
+            player.Model.GameNode.AddChild(cameraNode); // Camera on player
 
+            // -Inputs controller-
             inputsManager.PlayerController = (PlayerController)player.Controller;
             
+            // -Positions-
             enemies.Model.SetPosition(pos);
-            //player.Model.SetPosition(pos);
+            player.Model.SetPosition(pos);
+            midGem.SetPosition(new Vector3(-50, 150, 0));
+            doubleScore.SetPosition(new Vector3(100, 0, 0));
 
+            // -Start timer-
             physics.StartSimTimer();    // Must be the last method in create
         }
 
@@ -62,9 +82,10 @@ namespace RaceGame
         protected override void UpdateScene(FrameEvent evt)
         {
             base.UpdateScene(evt);
-            physics.UpdatePhysics(0.01f);
+            
             gameHMD.Update(evt);
             player.Update(evt);
+            physics.UpdatePhysics(0.01f);
             mCamera.LookAt(player.Position);
         }
 
@@ -89,6 +110,9 @@ namespace RaceGame
             {
                 enemies.Model.DisposeModel();
             }
+
+            midGem.Dispose();
+            doubleScore.Dispose();
 
             environment.Dispose();
 

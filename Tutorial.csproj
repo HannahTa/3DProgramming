@@ -54,6 +54,7 @@
     <Compile Include="AbstractClasses\CharacterClasses\CharacterModel.cs" />
     <Compile Include="AbstractClasses\CharacterClasses\CharacterStats.cs" />
     <Compile Include="AbstractClasses\Collectables\AllGems\MidGem.cs" />
+    <Compile Include="AbstractClasses\Collectables\AllPowerUps\DoubleScore.cs" />
     <Compile Include="AbstractClasses\Collectables\Collectable.cs" />
     <Compile Include="AbstractClasses\Collectables\Gem.cs" />
     <Compile Include="AbstractClasses\Collectables\PowerUp.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="AbstractClasses\EnemiesClasses\EnemiesModel.cs" />
     <Compile Include="AbstractClasses\EnemiesClasses\EnemiesStats.cs" />
     <Compile Include="AbstractClasses\GameElement.cs" />
+    <Compile Include="AbstractClasses\Guns\AllProjectile\SlowProjectile.cs" />
+    <Compile Include="AbstractClasses\Guns\AllGuns\SlowGun.cs" />
     <Compile Include="AbstractClasses\MovableElement.cs" />
     <Compile Include="AbstractClasses\PlayerClasses\Player.cs" />
     <Compile Include="AbstractClasses\PlayerClasses\PlayerController.cs" />
@@ -127,5 +130,6 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

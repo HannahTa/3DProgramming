@@ -37,6 +37,8 @@ namespace PhysicsEng
 
             //beight forse = -mass * gravity * direction of gravity
             // Elasticity force
+            //force = this.mass * this.Gravity * Position.y;
+
             force = - this.mass * this.Gravity * Position;
         }
     }
