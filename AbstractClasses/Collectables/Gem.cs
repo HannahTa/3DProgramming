@@ -1,5 +1,6 @@
 ﻿using System;
 using Mogre;
+using PhysicsEng;
 
 namespace RaceGame
 {
@@ -27,12 +28,25 @@ namespace RaceGame
         public override void Update(FrameEvent evt)
         {
             Animate(evt);
-            
+            //remove = IsCollidingWith("Player");
             // Collision detection with the player goes here
             // (ignore until week 8) ...
-
             base.Update(evt);
         }
+
+        //private bool IsCollidingWith(string objName)
+        //{
+        //    bool isColliding = false;
+        //    foreach (Contacts c in physObj.CollisionList)
+        //    {
+        //        if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
+        //        {
+        //            isColliding = true;
+        //            break;
+        //        }
+        //    }
+        //    return isColliding;
+        //}
 
         public override void Animate(FrameEvent evt)
         {

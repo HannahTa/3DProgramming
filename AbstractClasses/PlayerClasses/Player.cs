@@ -18,23 +18,39 @@ namespace RaceGame
         //PhysObj physObj;
         //SceneNode controlNode;
 
+        Armoury playerArmoury;
+
+        public Armoury PlayerArmoury
+        {
+            get { return playerArmoury; }
+        }
+
         public Player(SceneManager mSceneMgr)
         {
             model = new PlayerModel(mSceneMgr);
             controller = new PlayerController(this);
             stats = new PlayerStats();
+            playerArmoury = new Armoury();
         }
 
         public override void Update(FrameEvent evt)
         {
             //model.Animate();
             controller.Update(evt);
+
+            if (playerArmoury.GunChanged == true)
+            {
+                ((PlayerModel)model).AttachGun(playerArmoury.ActiveGun);    // Changes the gun if true
+                playerArmoury.GunChanged = false;       // If was always true, would continualy change guns
+            }
+
             base.Update(evt);
         }
         
         public override void Shoot()
         {
-            base.Shoot();
+            //base.Shoot();
+            playerArmoury.ActiveGun.Fire();
         }
     }
 }

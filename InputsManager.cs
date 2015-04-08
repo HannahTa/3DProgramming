@@ -131,6 +131,7 @@ namespace RaceGame
             {
                 case MOIS.KeyCode.KC_SPACE:
                     {
+                        //Tutorial.shoot = true;
                         break; // For shooting!
                     }
                 case MOIS.KeyCode.KC_E:

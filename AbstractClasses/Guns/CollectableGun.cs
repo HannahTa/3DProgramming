@@ -45,6 +45,8 @@ namespace RaceGame
             {
                 (gun.GameNode.Parent).RemoveChild(gun.GameNode.Name);
                 playerArmoury.AddGun(gun);
+                // detach the gun model from current node and add it to player sub-scene-graph
+                // Call Dispose before break
             }
             
             base.Update(evt);

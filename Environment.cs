@@ -16,6 +16,7 @@ namespace RaceGame
         RenderWindow mWindow;               // This field will contain a reference to the rendering window
 
         Ground ground;                      // This field will contain an istance of the ground object
+        Wall wall;
 
         /// <summary>
         /// Constructor
@@ -41,9 +42,11 @@ namespace RaceGame
 
             SetSky();
             ground = new Ground(mSceneMgr);
+            wall = new Wall(mSceneMgr);
             #endregion
 
             Physics.AddBoundary(ground.Plane);
+            Physics.AddBoundary(wall.Plane);
         }
 
         #region As in Demo 11
@@ -53,6 +56,7 @@ namespace RaceGame
         public void Dispose()
         {
             ground.Dispose();
+            wall.Dispose();
         }
         
         /// <summary>

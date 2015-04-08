@@ -11,6 +11,7 @@ namespace RaceGame
     {
         GameInterface gameHMD;
 
+        //Wall wall;
         Environment environment;
         Player player;
         Enemies enemies;
@@ -18,6 +19,9 @@ namespace RaceGame
         Score stat;
         MidGem midGem;
         DoubleScore doubleScore;
+
+        List<MidGem> midGems;
+        List<MidGem> midGemsToRemove;
 
         SceneNode cameraNode;
 
@@ -45,7 +49,8 @@ namespace RaceGame
             // Environment
             mSceneMgr.ShadowTechnique = ShadowTechnique.SHADOWTYPE_STENCIL_MODULATIVE;
             environment = new Environment(mSceneMgr, mWindow);
-            
+            //wall = new Wall(mSceneMgr);
+
             // Player
             player = new Player(mSceneMgr);
             
@@ -55,8 +60,15 @@ namespace RaceGame
             // -Power-ups-
             stat = new Score();
             midGem = new MidGem(mSceneMgr , stat);
-            doubleScore = new DoubleScore(mSceneMgr);
             
+
+            doubleScore = new DoubleScore(mSceneMgr);
+
+            midGems = new List<MidGem>();
+            midGemsToRemove = new List<MidGem>();
+
+            midGems.Add(midGem);
+
             // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
             cameraNode.AttachObject(mCamera);
@@ -69,7 +81,7 @@ namespace RaceGame
             //enemies.Model.SetPosition(pos);
             //player.Model.SetPosition(pos);
             
-            //midGem.SetPosition(new Vector3(-50, 150, 0));
+            midGem.SetPosition(new Vector3(-50, 0, 50));
             //doubleScore.SetPosition(new Vector3(100, 0, 0));
 
             // -Start timer-
@@ -82,11 +94,28 @@ namespace RaceGame
         /// <param name="evt"></param>
         protected override void UpdateScene(FrameEvent evt)
         {
+            physics.UpdatePhysics(0.01f);
             base.UpdateScene(evt);
-            
+
+            foreach (MidGem midgem in midGems)
+            {
+                midgem.Update(evt);
+                if (midgem.RemoveMe)
+                {
+                    midGemsToRemove.Add(midgem);
+                }
+            }
+
+            foreach (MidGem midgem in midGemsToRemove)
+            {
+                midGemsToRemove.Remove(midgem);
+                midgem.Dispose();
+            }
+            midGemsToRemove.Clear();
+
             gameHMD.Update(evt);
             player.Update(evt);
-            physics.UpdatePhysics(0.01f);
+            
             mCamera.LookAt(player.Position);
         }
 
@@ -112,9 +141,21 @@ namespace RaceGame
                 enemies.Model.DisposeModel();
             }
 
-            midGem.Dispose();
+            if (midGem != null)
+            {
+                midGem.Dispose();
+            }
+
+            //midGem.Dispose();
+            foreach (MidGem midgem in midGems)
+            {
+                midgem.Dispose();
+            }
+
+
             doubleScore.Dispose();
 
+            //wall.Dispose();
             environment.Dispose();
 
             gameHMD.Dispose();

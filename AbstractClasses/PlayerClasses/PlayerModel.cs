@@ -15,6 +15,8 @@ namespace RaceGame
         ModelElement playerCellsNode; //
         ModelElement playerSphereNode; //
 
+        ModelElement gunGroupNode; //
+
         SceneNode controlNode;
 
         public PlayerModel(SceneManager mSceneMgr)
@@ -33,7 +35,7 @@ namespace RaceGame
         protected override void LoadModelElements()
         {
             // Load model
-            System.Console.WriteLine("LoadModelElements");
+            //System.Console.WriteLine("LoadModelElements");
             playerMainNode = new ModelElement(mSceneMgr, "Main.mesh");
             playerCellsNode = new ModelElement(mSceneMgr, "PowerCells.mesh");
             playerSphereNode = new ModelElement(mSceneMgr, "Sphere.mesh");
@@ -52,12 +54,14 @@ namespace RaceGame
             
             float radius = 1;
 
-            physObj = new PhysObj(radius, "Main", 0.1f, 0.7f, 0.3f);
+            physObj = new PhysObj(radius, "Player", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;
             //physObj.Position = controlNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            //FrictionForce
             Physics.AddPhysObj(physObj);
-            
+
+            physObj.SceneNode = playerMainNode.GameNode;
             //base.AssembleModel();
         }
 
@@ -72,6 +76,22 @@ namespace RaceGame
             physObj = null;
             
             //base.DisposeModel();
+        }
+
+        public void AttachGun(Gun gun)
+        {
+            // Checks whether the gunGroupNode has any child(gunGroupNode.GameNode.NumChildren()!=0) 
+            // and if it has children call the RemoveAllChildren() methods from its GameNode
+
+            // outside of the if statment add the GameNode of the gun passed as parameter as child of the
+            // GameNode of the gunGorupNode
+
+            if (gunGroupNode.GameNode.NumChildren() != 0)
+            {
+                gunGroupNode.GameNode.RemoveAllChildren();
+            }
+
+            gunGroupNode.AddChild(gun.GameNode);
         }
     }
 }

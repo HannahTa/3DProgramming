@@ -10,21 +10,19 @@ namespace RaceGame
 {
     class MidGem : Gem
     {
-        // Initialize the physiscs engine and add gravity and friction forces to it
-        // At the end of the loadModel of the children classes you should pass the gameNode
-        // to the physObj through the propert SceneNode of the physics object
-
-        // Write in the Update method the cde for collision detection with the player as
-        // explained in the video, just use the remove fild from Collectable setting it to
-        // true, use the method increase from the score object to change the score and add
-        // a Dispose() call before the break statement
-
         //PhysObj physObj;
         SceneNode controlNode;
 
         //ModelElement midGemNode1;
         Entity midGemEntity;
         SceneNode midGemNode;
+
+        //bool removeMe;
+        
+        //public bool RemoveMe
+        //{
+        //    get { return removeMe; }
+        //}
 
         public MidGem(SceneManager mSceneMgr, Stat score):base(mSceneMgr, score)
         {
@@ -37,6 +35,8 @@ namespace RaceGame
         protected override void LoadModel()
         {
             base.LoadModel();
+            remove = false;
+
             // Load the geometry for the power up (gem) and the scene graph 
             // nodes for it using as usual the gameNode and gameEntity
             midGemEntity = mSceneMgr.CreateEntity("Gem.mesh");
@@ -54,7 +54,6 @@ namespace RaceGame
 
             physObj = new PhysObj(radius, "MidGem", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;
-            physObj.Position = controlNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             Physics.AddPhysObj(physObj);
         }
@@ -65,6 +64,21 @@ namespace RaceGame
             //remove = true
             //method increase score object
             //add a dispose call before the break statement
+            remove = IsCollidingWith("Player");
+        }
+
+        private bool IsCollidingWith(string objName)
+        {
+            bool isColliding = false;
+            foreach (Contacts c in physObj.CollisionList)
+            {
+                if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
+                {
+                    isColliding = true;
+                    break;
+                }
+            }
+            return isColliding;
         }
     }
 }

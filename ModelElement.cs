@@ -32,7 +32,8 @@ namespace RaceGame
         public override void Move(Vector3 direction)
         {
             // YOUR CODE FOR MOVING THE GAMENODE GOES HERE
-            gameNode.Translate(direction);
+            //gameNode.Translate(direction);
+            physObj.Velocity = 100 * direction;
         }
 
         /// <summary>

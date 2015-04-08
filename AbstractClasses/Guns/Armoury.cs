@@ -68,10 +68,41 @@ namespace RaceGame
             if (activeGun != null && collectedGuns != null)
             {
                 tempGun = activeGun;
-
+                index = index % collectedGuns.Count;    // Keeps index in the limits ??
                 ChangeGun(collectedGuns[index]);
-
             }
+        }
+
+        public void AddGun(Gun gun)
+        {
+            bool add = true;
+
+            foreach (Gun g in collectedGuns)
+            {
+                // Check if add is true? and whether the type of gun you are passing is in collected gun list
+                //(g.GetType() == gun.GetType());
+                //if they are both true then it calls reloadAmmo method for g
+                // Call the changegun method passing g to it and then set add to false
+                if (add == true && g.GetType() == gun.GetType())
+                {
+                    g.ReloadAmmo();
+                    ChangeGun(g);
+                    add = false;
+                }
+
+                if (add == true)
+                {
+                    ChangeGun(gun);
+                    collectedGuns.Add(gun);
+                }
+                else
+                {
+                    gun.Dispose();
+                }
+            }
+
+            // once foreach loop finished, check the add variable, if true then Call ChangeGun method, pass gun to it
+            // and add the gun to the collectedGun list, else call the Dispose method from gun
         }
     }
 }
