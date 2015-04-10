@@ -14,8 +14,12 @@ namespace RaceGame
         ModelElement playerMainNode; // 
         ModelElement playerCellsNode; //
         ModelElement playerSphereNode; //
+        
+        SceneNode wheelsGroupNode;
+        SceneNode hullGroupNode;
+        SceneNode modelNode; //??
 
-        ModelElement gunGroupNode; //
+        SceneNode gunGroupNode; //
 
         SceneNode controlNode;
 
@@ -26,8 +30,8 @@ namespace RaceGame
             LoadModelElements();
             
             AssembleModel();
-            this.gameNode = playerMainNode.GameNode;//controlNode;
-
+            //this.gameNode = playerMainNode.GameNode;//controlNode;
+            //physObj.SceneNode = gameNode;
             //this.SetPosition(new Vector3(-50, 100, 0));
             //this.gameNode = playerMainNode.GameNode;
         }
@@ -35,7 +39,14 @@ namespace RaceGame
         protected override void LoadModelElements()
         {
             // Load model
-            //System.Console.WriteLine("LoadModelElements");
+            wheelsGroupNode = mSceneMgr.CreateSceneNode();
+            
+            hullGroupNode = mSceneMgr.CreateSceneNode();
+            
+            modelNode = mSceneMgr.CreateSceneNode();
+            
+            gunGroupNode = mSceneMgr.CreateSceneNode();
+
             playerMainNode = new ModelElement(mSceneMgr, "Main.mesh");
             playerCellsNode = new ModelElement(mSceneMgr, "PowerCells.mesh");
             playerSphereNode = new ModelElement(mSceneMgr, "Sphere.mesh");
@@ -46,31 +57,76 @@ namespace RaceGame
         protected override void AssembleModel()
         {
             // Attach and assemble model
-            //this.gameNode = playerMainNode.GameNode;
+            wheelsGroupNode.AddChild(playerSphereNode.GameNode);
             
+            hullGroupNode.AddChild(playerCellsNode.GameNode);
+            hullGroupNode.AddChild(playerMainNode.GameNode);
+            hullGroupNode.AddChild(wheelsGroupNode);
+            hullGroupNode.AddChild(gunGroupNode);
+
+            modelNode.AddChild(hullGroupNode);
+
             controlNode = mSceneMgr.CreateSceneNode();
-            controlNode.AddChild(playerMainNode.GameNode);
+            controlNode.AddChild(modelNode);
             mSceneMgr.RootSceneNode.AddChild(controlNode);
             
-            float radius = 1;
+            float radius = 10;
+            controlNode.Position += radius * Vector3.UNIT_Y;
+            modelNode.Position -= radius * Vector3.UNIT_Y;
 
             physObj = new PhysObj(radius, "Player", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;
-            //physObj.Position = controlNode.Position;
+            physObj.Position = controlNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            //FrictionForce
+            physObj.AddForceToList(new FrictionForce(physObj));
             Physics.AddPhysObj(physObj);
 
-            physObj.SceneNode = playerMainNode.GameNode;
+            this.gameNode = modelNode;
+            //physObj.SceneNode = controlNode;
+            
             //base.AssembleModel();
         }
 
         public override void DisposeModel()
         {
             // Call Dispose method from each of the ModelElements
-            playerCellsNode.Dispose();
+            playerSphereNode.GameNode.RemoveAllChildren();
+            playerSphereNode.GameNode.Parent.RemoveChild(playerSphereNode.GameNode);
+            playerSphereNode.GameNode.DetachAllObjects();
             playerSphereNode.Dispose();
-            playerMainNode.Dispose(); // Main gets deleted last as that is the parent node
+
+            wheelsGroupNode.RemoveAllChildren();
+            wheelsGroupNode.Parent.RemoveChild(wheelsGroupNode);
+            wheelsGroupNode.DetachAllObjects();
+            wheelsGroupNode.Dispose();
+
+            playerCellsNode.GameNode.RemoveAllChildren();
+            playerCellsNode.GameNode.Parent.RemoveChild(playerCellsNode.GameNode);
+            playerCellsNode.GameNode.DetachAllObjects();
+            playerCellsNode.Dispose();
+
+            playerMainNode.GameNode.RemoveAllChildren();
+            playerMainNode.GameNode.Parent.RemoveChild(playerMainNode.GameNode);
+            playerMainNode.GameNode.DetachAllObjects();
+            playerMainNode.Dispose();
+
+            gunGroupNode.RemoveAllChildren();
+            gunGroupNode.Parent.RemoveChild(gunGroupNode);
+            gunGroupNode.DetachAllObjects();
+            gunGroupNode.Dispose();
+
+            hullGroupNode.RemoveAllChildren();
+            hullGroupNode.Parent.RemoveChild(hullGroupNode);
+            hullGroupNode.DetachAllObjects();
+            hullGroupNode.Dispose();
+
+            modelNode.RemoveAllChildren();
+            modelNode.Parent.RemoveChild(modelNode);
+            modelNode.DetachAllObjects();
+            modelNode.Dispose();
+
+            //playerSphereNode.Dispose();
+            //playerMainNode.Dispose(); // Main gets deleted last as that is the parent node
 
             Physics.RemovePhysObj(physObj);
             physObj = null;
@@ -86,9 +142,9 @@ namespace RaceGame
             // outside of the if statment add the GameNode of the gun passed as parameter as child of the
             // GameNode of the gunGorupNode
 
-            if (gunGroupNode.GameNode.NumChildren() != 0)
+            if (gunGroupNode.NumChildren() != 0)
             {
-                gunGroupNode.GameNode.RemoveAllChildren();
+                gunGroupNode.RemoveAllChildren();
             }
 
             gunGroupNode.AddChild(gun.GameNode);

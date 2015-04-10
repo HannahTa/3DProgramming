@@ -85,7 +85,7 @@ namespace RaceGame
         {
             //System.Console.WriteLine("SetPosition");
             gameNode.Position = position;
-            //physObj.Position = gameNode.Position;
+            physObj.Position = position;
         }
     }
 }

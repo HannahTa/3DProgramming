@@ -11,7 +11,7 @@ namespace RaceGame
     class EnemiesModel : CharacterModel
     {
         //PhysObj physObj;
-        SceneNode controlNode;
+        //SceneNode controlNode;
 
         ModelElement enemyNode1;
 
@@ -20,8 +20,8 @@ namespace RaceGame
             this.mSceneMgr = mSceneMgr;
             LoadModelElements();
             AssembleModel();
-            this.gameNode = enemyNode1.GameNode; //controlNode; //
-            this.SetPosition(new Vector3(0, 0, 100));
+            //this.gameNode = enemyNode1.GameNode; //controlNode; //
+            //this.SetPosition(new Vector3(0, 0, 100));
             
         }
 
@@ -37,20 +37,18 @@ namespace RaceGame
             // Attach and assemble model
             //mSceneMgr.RootSceneNode.AddChild(enemyNode1.GameNode);
 
-            controlNode = mSceneMgr.CreateSceneNode();
-            controlNode.AddChild(enemyNode1.GameNode);
-            mSceneMgr.RootSceneNode.AddChild(controlNode);
+            mSceneMgr.RootSceneNode.AddChild(enemyNode1.GameNode);
 
             // Physics
             float radius = 1;
-            controlNode.Position += radius * Vector3.UNIT_Y;
-            enemyNode1.GameNode.Position += radius * Vector3.UNIT_Y;
 
             physObj = new PhysObj(radius, "Robot", 0.1f, 0.7f, 0.3f);
-            physObj.SceneNode = controlNode;
-            //physObj.Position = controlNode.Position;
+            physObj.SceneNode = enemyNode1.GameNode;
+            physObj.Position = enemyNode1.GameNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             Physics.AddPhysObj(physObj);
+
+            this.gameNode = enemyNode1.GameNode;
 
             //base.AssembleModel();
         }

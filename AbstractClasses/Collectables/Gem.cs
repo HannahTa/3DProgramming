@@ -23,6 +23,12 @@ namespace RaceGame
         {
             // The link with to phisics engine goes here
             // (ignore until week 8) ...
+            //physObj = new PhysObj(10, "Gem", 0.1f, 0.5f);
+            //physObj.SceneNode = gameNode;
+            //physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            //physObj.AddForceToList(new FrictionForce(physObj));
+
+            //Physics.AddPhysObj(physObj);
         }
 
         public override void Update(FrameEvent evt)
@@ -34,19 +40,21 @@ namespace RaceGame
             base.Update(evt);
         }
 
-        //private bool IsCollidingWith(string objName)
-        //{
-        //    bool isColliding = false;
-        //    foreach (Contacts c in physObj.CollisionList)
-        //    {
-        //        if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
-        //        {
-        //            isColliding = true;
-        //            break;
-        //        }
-        //    }
-        //    return isColliding;
-        //}
+        public bool IsCollidingWith(string objName)
+        {
+            bool isColliding = false;
+            foreach (Contacts c in physObj.CollisionList)
+            {
+                if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
+                {
+                    isColliding = true;
+                    score.Increase(100);
+                    Dispose();
+                    break;
+                }
+            }
+            return isColliding;
+        }
 
         public override void Animate(FrameEvent evt)
         {

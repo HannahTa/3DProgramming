@@ -43,8 +43,8 @@ namespace RaceGame
 
             // Physics
             float radius = 10;
-            controlNode.Position += radius * Vector3.UNIT_Y;
-            sProjNode.Position += radius * Vector3.UNIT_Y;
+            //controlNode.Position += radius * Vector3.UNIT_Y;
+            //sProjNode.Position += radius * Vector3.UNIT_Y;
 
             physObj = new PhysObj(radius, "SlowProj", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = controlNode;

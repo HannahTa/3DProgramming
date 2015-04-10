@@ -14,14 +14,16 @@ namespace RaceGame
         //Wall wall;
         Environment environment;
         Player player;
-        Enemies enemies;
+        //Enemies enemies;
 
         Score stat;
         MidGem midGem;
         DoubleScore doubleScore;
 
-        List<MidGem> midGems;
-        List<MidGem> midGemsToRemove;
+        List<MidGem> Gems;
+        List<MidGem> gemsToRemove;
+
+        List<Enemies> robots;
 
         SceneNode cameraNode;
 
@@ -39,7 +41,7 @@ namespace RaceGame
         /// </summary>
         protected override void CreateScene()
         {
-            Vector3 pos = new Vector3(50, 50, 0);
+            Vector3 pos = new Vector3(10, 0, 0);
             physics = new Physics();
 
             // GUI
@@ -51,23 +53,28 @@ namespace RaceGame
             environment = new Environment(mSceneMgr, mWindow);
             //wall = new Wall(mSceneMgr);
 
+
+            // -Power-ups-
+            //stat = new Score();
+            midGem = new MidGem(mSceneMgr , stat);
+            //midGem.SetPosition(new Vector3(-50, 50, 50));
+            
+
+            //doubleScore = new DoubleScore(mSceneMgr);
+
+            //Gems = new List<MidGem>();
+            //gemsToRemove = new List<MidGem>();
+
+            //Gems.Add(midGem);
+
+
             // Player
             player = new Player(mSceneMgr);
             
             // Enemies
-            enemies = new Enemies(mSceneMgr);
-            
-            // -Power-ups-
-            stat = new Score();
-            midGem = new MidGem(mSceneMgr , stat);
-            
-
-            doubleScore = new DoubleScore(mSceneMgr);
-
-            midGems = new List<MidGem>();
-            midGemsToRemove = new List<MidGem>();
-
-            midGems.Add(midGem);
+            //enemies = new Enemies(mSceneMgr);
+            //robots = new List<Enemies>();
+            //AddRobot();
 
             // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
@@ -81,7 +88,7 @@ namespace RaceGame
             //enemies.Model.SetPosition(pos);
             //player.Model.SetPosition(pos);
             
-            midGem.SetPosition(new Vector3(-50, 0, 50));
+            //midGem.SetPosition(new Vector3(-50, 0, 50));
             //doubleScore.SetPosition(new Vector3(100, 0, 0));
 
             // -Start timer-
@@ -97,21 +104,21 @@ namespace RaceGame
             physics.UpdatePhysics(0.01f);
             base.UpdateScene(evt);
 
-            foreach (MidGem midgem in midGems)
-            {
-                midgem.Update(evt);
-                if (midgem.RemoveMe)
-                {
-                    midGemsToRemove.Add(midgem);
-                }
-            }
+            //foreach (MidGem g in Gems)
+            //{
+            //    g.Update(evt);
+            //    if (g.RemoveMe)
+            //    {
+            //        gemsToRemove.Add(g);
+            //    }
+            //}
 
-            foreach (MidGem midgem in midGemsToRemove)
-            {
-                midGemsToRemove.Remove(midgem);
-                midgem.Dispose();
-            }
-            midGemsToRemove.Clear();
+            //foreach (MidGem g in gemsToRemove)
+            //{
+            //    gemsToRemove.Remove(g);
+            //    g.Dispose();
+            //}
+            //gemsToRemove.Clear();
 
             gameHMD.Update(evt);
             player.Update(evt);
@@ -136,24 +143,28 @@ namespace RaceGame
                 player.Model.DisposeModel();
             }
 
-            if (enemies != null)
-            {
-                enemies.Model.DisposeModel();
-            }
+            //if (enemies != null)
+            //{
+            //    enemies.Model.DisposeModel();
+            //}
+            //foreach (Enemies e in robots)
+            //{
+            //    e.Model.Dispose();
+            //}
 
             if (midGem != null)
             {
                 midGem.Dispose();
             }
 
-            //midGem.Dispose();
-            foreach (MidGem midgem in midGems)
-            {
-                midgem.Dispose();
-            }
+            ////midGem.Dispose();
+            //foreach (MidGem g in Gems)
+            //{
+            //    g.Dispose();
+            //}
 
 
-            doubleScore.Dispose();
+            //doubleScore.Dispose();
 
             //wall.Dispose();
             environment.Dispose();
@@ -161,7 +172,17 @@ namespace RaceGame
             gameHMD.Dispose();
             physics.Dispose();
         }
- 
+
+        /**
+         * Adds robots into the game, mwahaha!
+         */
+        private void AddRobot()
+        {
+            Enemies enemies = new Enemies(mSceneMgr);
+            enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(0, 100), 100, Mogre.Math.RangeRandom(0, 100)));
+            robots.Add(enemies);
+        }
+
         /// <summary>
         /// This method create a new camera
         /// </summary>
