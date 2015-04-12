@@ -13,7 +13,11 @@ namespace RaceGame
         protected Vector3 initialDirection;
         public Vector3 InitialDirection
         {
-            set { initialDirection = value; }
+            set
+            {
+                initialDirection = value;
+                physObj.Velocity = speed * initialDirection;
+            }
         }
         protected float healthDamage;
         public float HealthDamage

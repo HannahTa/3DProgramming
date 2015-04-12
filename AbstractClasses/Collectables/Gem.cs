@@ -13,6 +13,13 @@ namespace RaceGame
         protected Stat score;
         protected int increase;
 
+        bool removeMe;
+
+        public bool RemoveMe
+        {
+            get { return removeMe; }
+        }
+
         protected Gem(SceneManager mSceneMgr, Stat score)
         {
             this.mSceneMgr = mSceneMgr;
@@ -21,23 +28,21 @@ namespace RaceGame
 
         protected virtual void LoadModel()
         {
+            removeMe = false;
             // The link with to phisics engine goes here
             // (ignore until week 8) ...
-            //physObj = new PhysObj(10, "Gem", 0.1f, 0.5f);
-            //physObj.SceneNode = gameNode;
-            //physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            //physObj.AddForceToList(new FrictionForce(physObj));
+            physObj = new PhysObj(7, "Gem", 0.3f, 0.5f);
+            physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            physObj.SceneNode = gameNode;
 
-            //Physics.AddPhysObj(physObj);
+            Physics.AddPhysObj(physObj);
         }
 
         public override void Update(FrameEvent evt)
         {
             Animate(evt);
-            //remove = IsCollidingWith("Player");
-            // Collision detection with the player goes here
-            // (ignore until week 8) ...
-            base.Update(evt);
+            removeMe = IsCollidingWith("Player");
+            //base.Update(evt);
         }
 
         public bool IsCollidingWith(string objName)

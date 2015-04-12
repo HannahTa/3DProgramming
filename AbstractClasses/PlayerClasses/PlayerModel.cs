@@ -70,7 +70,7 @@ namespace RaceGame
             controlNode.AddChild(modelNode);
             mSceneMgr.RootSceneNode.AddChild(controlNode);
             
-            float radius = 10;
+            float radius = 50;
             controlNode.Position += radius * Vector3.UNIT_Y;
             modelNode.Position -= radius * Vector3.UNIT_Y;
 
@@ -78,11 +78,10 @@ namespace RaceGame
             physObj.SceneNode = controlNode;
             physObj.Position = controlNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            physObj.AddForceToList(new FrictionForce(physObj));
+            //physObj.AddForceToList(new FrictionForce(physObj));
             Physics.AddPhysObj(physObj);
-
+            System.Console.WriteLine(physObj.CollisionList);
             this.gameNode = modelNode;
-            //physObj.SceneNode = controlNode;
             
             //base.AssembleModel();
         }
@@ -124,6 +123,8 @@ namespace RaceGame
             modelNode.Parent.RemoveChild(modelNode);
             modelNode.DetachAllObjects();
             modelNode.Dispose();
+
+            
 
             //playerSphereNode.Dispose();
             //playerMainNode.Dispose(); // Main gets deleted last as that is the parent node

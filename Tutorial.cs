@@ -11,17 +11,24 @@ namespace RaceGame
     {
         GameInterface gameHMD;
 
+        static public bool shoot;
+
         //Wall wall;
         Environment environment;
         Player player;
         //Enemies enemies;
 
         Score stat;
-        MidGem midGem;
+        Gem midGem;
         DoubleScore doubleScore;
 
-        List<MidGem> Gems;
-        List<MidGem> gemsToRemove;
+        Heart heart;
+
+        CollectableGun collGun;
+        Gun slowGun;
+
+        List<Gem> Gems;
+        List<Gem> gemsToRemove;
 
         List<Enemies> robots;
 
@@ -51,22 +58,21 @@ namespace RaceGame
             // Environment
             mSceneMgr.ShadowTechnique = ShadowTechnique.SHADOWTYPE_STENCIL_MODULATIVE;
             environment = new Environment(mSceneMgr, mWindow);
-            //wall = new Wall(mSceneMgr);
-
 
             // -Power-ups-
-            //stat = new Score();
-            midGem = new MidGem(mSceneMgr , stat);
-            //midGem.SetPosition(new Vector3(-50, 50, 50));
-            
+            stat = new Score();
+            midGem = new MidGem(mSceneMgr, stat);
+            midGem.SetPosition(new Vector3(-50, 100, 50));
 
             //doubleScore = new DoubleScore(mSceneMgr);
 
-            //Gems = new List<MidGem>();
-            //gemsToRemove = new List<MidGem>();
+            Gems = new List<Gem>();
+            gemsToRemove = new List<Gem>();
 
-            //Gems.Add(midGem);
+            Gems.Add(midGem);
 
+            heart = new Heart(mSceneMgr);
+            heart.SetPosition(new Vector3(-100, 50, 50));
 
             // Player
             player = new Player(mSceneMgr);
@@ -76,6 +82,10 @@ namespace RaceGame
             //robots = new List<Enemies>();
             //AddRobot();
 
+            slowGun = new SlowGun(mSceneMgr);
+            collGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
+            collGun.SetPosition(new Vector3(50, 0, 0));
+
             // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
             cameraNode.AttachObject(mCamera);
@@ -83,13 +93,6 @@ namespace RaceGame
 
             // -Inputs controller-
             inputsManager.PlayerController = (PlayerController)player.Controller;
-            
-            // -Positions-
-            //enemies.Model.SetPosition(pos);
-            //player.Model.SetPosition(pos);
-            
-            //midGem.SetPosition(new Vector3(-50, 0, 50));
-            //doubleScore.SetPosition(new Vector3(100, 0, 0));
 
             // -Start timer-
             physics.StartSimTimer();    // Must be the last method in create
@@ -104,21 +107,30 @@ namespace RaceGame
             physics.UpdatePhysics(0.01f);
             base.UpdateScene(evt);
 
-            //foreach (MidGem g in Gems)
-            //{
-            //    g.Update(evt);
-            //    if (g.RemoveMe)
-            //    {
-            //        gemsToRemove.Add(g);
-            //    }
-            //}
+            //collGun.Update(evt);
+            heart.Update(evt);
 
-            //foreach (MidGem g in gemsToRemove)
-            //{
-            //    gemsToRemove.Remove(g);
-            //    g.Dispose();
-            //}
-            //gemsToRemove.Clear();
+            if (shoot)
+            {
+                // shoot the gun
+                player.Shoot();
+            }
+
+            foreach (Gem g in Gems)
+            {
+                g.Update(evt);
+                if (g.RemoveMe)
+                {
+                    gemsToRemove.Add(g);
+                }
+            }
+
+            foreach (Gem g in gemsToRemove)
+            {
+                Gems.Remove(g);
+                g.Dispose();
+            }
+            gemsToRemove.Clear();
 
             gameHMD.Update(evt);
             player.Update(evt);
@@ -152,21 +164,27 @@ namespace RaceGame
             //    e.Model.Dispose();
             //}
 
+            if (heart != null)
+            {
+                heart.Dispose();
+            }
+
             if (midGem != null)
             {
                 midGem.Dispose();
             }
 
             ////midGem.Dispose();
-            //foreach (MidGem g in Gems)
-            //{
-            //    g.Dispose();
-            //}
+            foreach (Gem g in Gems)
+            {
+                g.Dispose();
+            }
 
+            collGun.Dispose();
+            slowGun.Dispose();
 
             //doubleScore.Dispose();
 
-            //wall.Dispose();
             environment.Dispose();
 
             gameHMD.Dispose();

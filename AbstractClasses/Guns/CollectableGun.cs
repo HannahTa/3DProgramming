@@ -1,10 +1,14 @@
 ﻿using System;
 using Mogre;
+using PhysicsEng;
 
 namespace RaceGame
 {
     class CollectableGun:Collectable
     {
+        SceneNode collGunNode;
+        Entity collGunEntity;
+
         Gun gun;
         public Gun Gun
         {
@@ -25,13 +29,15 @@ namespace RaceGame
             this.gun = gun;
             this.playerArmoury = playerArmoury;
 
-            this.gameNode = gun.GameNode;       // Initialize the gameNode 
-            //this.gameNode.Scale(1.5f);          // 
-            // Initialize the gameNode here, scale it by 1.5f using the Scale funtion, and add as its child the gameNode contained in the Gun object.
-            // Finally attach the gameNode to the sceneGraph.
+            mSceneMgr.RootSceneNode.AddChild(gun.GameNode);// <--
 
-            // Here goes the link to the physics engine
-            // (ignore until week 8) ...
+            physObj = new PhysObj(7, "Gun", 0.1f, 0.5f);
+            physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            physObj.SceneNode = gun.GameNode;
+
+            Physics.AddPhysObj(physObj);
+            
+            this.gameNode = gun.GameNode;       // Initialize the gameNode
         }
 
         public override void Update(FrameEvent evt)
@@ -41,10 +47,12 @@ namespace RaceGame
             // (ignore until week 8) ...
 
             // Remove = true
+            remove = IsCollidingWith("Player");
             if (this.remove == true)
             {
                 (gun.GameNode.Parent).RemoveChild(gun.GameNode.Name);
                 playerArmoury.AddGun(gun);
+                Dispose();
                 // detach the gun model from current node and add it to player sub-scene-graph
                 // Call Dispose before break
             }
@@ -55,6 +63,22 @@ namespace RaceGame
         public override void Animate(FrameEvent evt)
         {
             gameNode.Rotate(new Quaternion(Mogre.Math.AngleUnitsToRadians(evt.timeSinceLastFrame*10), Vector3.UNIT_Y));
+        }
+
+        public bool IsCollidingWith(string objName)
+        {
+            bool isColliding = false;
+            foreach (Contacts c in physObj.CollisionList)
+            {
+                if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
+                {
+                    isColliding = true;
+                    //System.Console.WriteLine("Collides");
+                    Dispose();
+                    break;
+                }
+            }
+            return isColliding;
         }
     }
 }

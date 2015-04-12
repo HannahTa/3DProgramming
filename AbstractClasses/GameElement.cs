@@ -59,6 +59,12 @@ namespace RaceGame
         /// </summary>
         public virtual void Dispose()
         {
+
+            if (physObj != null)
+            {
+                Physics.RemovePhysObj(physObj);
+                physObj = null;
+            }
             
             if (gameNode != null)
             {

@@ -31,6 +31,7 @@ namespace PhysicsEng
 			// force = ... ;
 
             force = new Vector3( obj.FrictionCoeff * velocityDir.Normalise());
+            //obj.
         }
     }
 }

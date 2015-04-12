@@ -9,6 +9,10 @@ namespace RaceGame
 {
     class SlowGun : Gun
     {
+        //ModelElement slowGunNode;
+
+        SceneNode slowGunNode;
+        Entity slowGunEntity;
 
         public SlowGun(SceneManager mSceneMgr)
         {
@@ -28,24 +32,43 @@ namespace RaceGame
          **/
         protected override void LoadModel()
         {
+            //slowGunNode = new ModelElement(mSceneMgr, "Sphere.mesh");
+            slowGunEntity = mSceneMgr.CreateEntity("Sphere.mesh");
+
+            slowGunNode = mSceneMgr.CreateSceneNode();
+            slowGunNode.AttachObject(slowGunEntity);
+            slowGunNode.Scale(1f, 1f, 1f);
+            //mSceneMgr.RootSceneNode.AddChild(slowGunNode);
+            
+            this.gameNode = slowGunNode;
             base.LoadModel();
         }
 
         public override void Fire()
         {
-            base.Fire();
-            // Check is ammo size is 0, if it isn't create a 
-            // new projectile of the correct type for the gun 
-            // (use the inherited field for this)
-
+            //base.Fire();
+            if (ammo.Value == 0)
+            {
+                ReloadAmmo();   // Reloads if ammo.Value = 0 when trying to fire
+            }
+            else
+            {
+                Projectile SP = new SlowProjectile(mSceneMgr);
+                SP.SetPosition(GunPosition() + 2 * GunDirection());
+                ammo.Decrease(1);   // Decrease ammo by 1
+            }
         }
 
         public override void ReloadAmmo()
         {
-            base.ReloadAmmo();
-            // Checks whether the ammo.Value is less than maxAmmo, 
-            // if it is, increase the value to a value of my choise, 
-            // but that keep the ammo.Value less or equal to maxAmmo
+            int ammoReload;
+
+            //base.ReloadAmmo();
+            if (ammo.Value < maxAmmo)
+            {
+                ammoReload = maxAmmo - ammo.Value;  // Makes sure that ammo is not more than maxAmmo
+                ammo.Increase(ammoReload);
+            }
         }
     }
 }

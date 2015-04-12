@@ -26,32 +26,22 @@ namespace RaceGame
 
         protected override void LoadModel()
         {
-            base.LoadModel();
-            remove = false;
-
             midGemEntity = mSceneMgr.CreateEntity("Gem.mesh");
 
             midGemNode = mSceneMgr.CreateSceneNode();
             midGemNode.AttachObject(midGemEntity);
+            midGemNode.Scale(2f, 2f, 2f);
             mSceneMgr.RootSceneNode.AddChild(midGemNode);
-            midGemNode.SetPosition(50, 100, 50);
-
-            physObj = new PhysObj(10, "Gem", 0.1f, 0.5f);
-            physObj.SceneNode = midGemNode;
-            physObj.AddForceToList(new WeightForce(physObj.InvMass));
-
-            Physics.AddPhysObj(physObj);
 
             this.gameNode = midGemNode;
+            base.LoadModel();
         }
 
-        protected void Update()
+        public override void Dispose()
         {
-            // Code for collision detection
-            //remove = true
-            remove = IsCollidingWith("Player");
-            //method increase score object
-            //add a dispose call before the break statement
-        }
+            base.Dispose();
+            Physics.RemovePhysObj(physObj);
+            physObj = null;
+        }
     }
 }

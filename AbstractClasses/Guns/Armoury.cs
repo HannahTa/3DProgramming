@@ -36,7 +36,7 @@ namespace RaceGame
             this.collectedGuns = new List<Gun>();
         }
 
-        // Dispose of each gun in th collectedGuns list
+        // Dispose of each gun in the collectedGuns list
         // and if the activeGun is not null dispose of it as well
         public void Dispose()
         {

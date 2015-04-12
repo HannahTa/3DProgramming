@@ -10,10 +10,11 @@ namespace RaceGame
     class SlowProjectile : Projectile
     {
         PhysObj physObj;
-        SceneNode controlNode;
 
         Entity sProjEntity;
         SceneNode sProjNode;
+
+        
 
         public SlowProjectile(SceneManager mSceneMgr)
         {
@@ -37,19 +38,16 @@ namespace RaceGame
 
             sProjNode.Scale(new Vector3(5, 5, 5));
 
-            controlNode = mSceneMgr.CreateSceneNode();
-            controlNode.AddChild(sProjNode);
-            mSceneMgr.RootSceneNode.AddChild(controlNode);
+            mSceneMgr.RootSceneNode.AddChild(sProjNode);
 
             // Physics
             float radius = 10;
-            //controlNode.Position += radius * Vector3.UNIT_Y;
-            //sProjNode.Position += radius * Vector3.UNIT_Y;
 
             physObj = new PhysObj(radius, "SlowProj", 0.1f, 0.7f, 0.3f);
-            physObj.SceneNode = controlNode;
-            physObj.Position = controlNode.Position;
+            physObj.SceneNode = sProjNode;
+            physObj.Position = sProjNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            
             Physics.AddPhysObj(physObj);
         }
 
