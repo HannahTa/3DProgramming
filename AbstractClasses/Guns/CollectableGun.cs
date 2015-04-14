@@ -7,7 +7,7 @@ namespace RaceGame
     class CollectableGun:Collectable
     {
         SceneNode collGunNode;
-        Entity collGunEntity;
+        //Entity collGunEntity;
 
         Gun gun;
         public Gun Gun
@@ -29,15 +29,26 @@ namespace RaceGame
             this.gun = gun;
             this.playerArmoury = playerArmoury;
 
-            mSceneMgr.RootSceneNode.AddChild(gun.GameNode);// <--
+            
+            //this.gameNode.Scale(new Vector3(1.5f, 1.5f, 1.5f));
 
-            physObj = new PhysObj(7, "Gun", 0.1f, 0.5f);
+            collGunNode = mSceneMgr.CreateSceneNode();
+            //this.gameNode = collGunNode;
+
+            //this.gameNode.Scale(new Vector3(1.5f, 1.5f, 1.5f));
+            //this.gameNode.AddChild(gun.GameNode);
+            collGunNode.AddChild(gun.GameNode);
+            mSceneMgr.RootSceneNode.AddChild(collGunNode);// <--
+
+            physObj = new PhysObj(8, "Gun", 0.1f, 0.5f);
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            physObj.SceneNode = gun.GameNode;
+            physObj.SceneNode = collGunNode;
 
             Physics.AddPhysObj(physObj);
+
+            this.gameNode = collGunNode;
             
-            this.gameNode = gun.GameNode;       // Initialize the gameNode
+            //this.gameNode = collGunNode;       // Initialize the gameNode
         }
 
         public override void Update(FrameEvent evt)
@@ -48,11 +59,12 @@ namespace RaceGame
 
             // Remove = true
             remove = IsCollidingWith("Player");
-            if (this.remove == true)
+            if (remove == true)
             {
-                (gun.GameNode.Parent).RemoveChild(gun.GameNode.Name);
+                (gun.GameNode.Parent).RemoveChild(gun.GameNode);
                 playerArmoury.AddGun(gun);
-                Dispose();
+                gun.GameNode.Dispose();
+                //Dispose();
                 // detach the gun model from current node and add it to player sub-scene-graph
                 // Call Dispose before break
             }
@@ -74,7 +86,7 @@ namespace RaceGame
                 {
                     isColliding = true;
                     //System.Console.WriteLine("Collides");
-                    Dispose();
+                    //Dispose();
                     break;
                 }
             }

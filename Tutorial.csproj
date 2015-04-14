@@ -55,6 +55,7 @@
     <Compile Include="AbstractClasses\CharacterClasses\CharacterStats.cs" />
     <Compile Include="AbstractClasses\Collectables\AllGems\MidGem.cs" />
     <Compile Include="AbstractClasses\Collectables\AllPowerUps\DoubleScore.cs" />
+    <Compile Include="AbstractClasses\Collectables\AllPowerUps\Health.cs" />
     <Compile Include="AbstractClasses\Collectables\Collectable.cs" />
     <Compile Include="AbstractClasses\Collectables\Gem.cs" />
     <Compile Include="AbstractClasses\Collectables\Heart.cs" />

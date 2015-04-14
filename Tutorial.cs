@@ -20,17 +20,23 @@ namespace RaceGame
 
         Score stat;
         Gem midGem;
+        //PowerUp health;
         DoubleScore doubleScore;
 
-        Heart heart;
-
-        CollectableGun collGun;
+        //CollectableGun collGun;
         Gun slowGun;
 
         List<Gem> Gems;
         List<Gem> gemsToRemove;
 
+        List<PowerUp> PowerUps;
+        List<PowerUp> powerUpsToRemove;
+
+        List<CollectableGun> collGuns;
+        List<CollectableGun> collGunsToRemove;
+
         List<Enemies> robots;
+        List<Enemies> robotsToRemove;
 
         SceneNode cameraNode;
 
@@ -64,27 +70,39 @@ namespace RaceGame
             midGem = new MidGem(mSceneMgr, stat);
             midGem.SetPosition(new Vector3(-50, 100, 50));
 
+            slowGun = new SlowGun(mSceneMgr);
+
+            //health = new Health(mSceneMgr, stat);
+            //health.SetPosition(new Vector3(100, 50, -50));
+
             //doubleScore = new DoubleScore(mSceneMgr);
 
             Gems = new List<Gem>();
             gemsToRemove = new List<Gem>();
 
-            Gems.Add(midGem);
+            collGuns = new List<CollectableGun>();
+            collGunsToRemove = new List<CollectableGun>();
 
-            heart = new Heart(mSceneMgr);
-            heart.SetPosition(new Vector3(-100, 50, 50));
+            PowerUps = new List<PowerUp>();
+            powerUpsToRemove = new List<PowerUp>();
+
+            Gems.Add(midGem);
+            //PowerUps.Add(health);
+            //AddPowerUp();
+            
 
             // Player
             player = new Player(mSceneMgr);
             
+            AddCollGun();
+
             // Enemies
             //enemies = new Enemies(mSceneMgr);
             //robots = new List<Enemies>();
             //AddRobot();
 
-            slowGun = new SlowGun(mSceneMgr);
-            collGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
-            collGun.SetPosition(new Vector3(50, 0, 0));
+            //collGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
+            //collGun.SetPosition(new Vector3(50, 0, 0));
 
             // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
@@ -107,8 +125,7 @@ namespace RaceGame
             physics.UpdatePhysics(0.01f);
             base.UpdateScene(evt);
 
-            //collGun.Update(evt);
-            heart.Update(evt);
+            //heart.Update(evt);
 
             if (shoot)
             {
@@ -131,6 +148,37 @@ namespace RaceGame
                 g.Dispose();
             }
             gemsToRemove.Clear();
+
+            foreach (CollectableGun cg in collGuns)
+            {
+                cg.Update(evt);
+                if (cg.RemoveMe)
+                {
+                    collGunsToRemove.Add(cg);
+                }
+            }
+
+            foreach (CollectableGun cg in collGunsToRemove)
+            {
+                collGuns.Remove(cg);
+                cg.Dispose();
+            }
+
+            //foreach (PowerUp pu in PowerUps)
+            //{
+            //    pu.Update(evt);
+            //    if (pu.RemoveMe)
+            //    {
+            //        powerUpsToRemove.Add(pu);
+            //    }
+            //}
+
+            //foreach (PowerUp pu in powerUpsToRemove)
+            //{
+            //    PowerUps.Remove(pu);
+            //    pu.Dispose();
+            //}
+            //powerUpsToRemove.Clear();
 
             gameHMD.Update(evt);
             player.Update(evt);
@@ -164,26 +212,31 @@ namespace RaceGame
             //    e.Model.Dispose();
             //}
 
-            if (heart != null)
-            {
-                heart.Dispose();
-            }
-
             if (midGem != null)
             {
                 midGem.Dispose();
             }
 
             ////midGem.Dispose();
+
             foreach (Gem g in Gems)
             {
                 g.Dispose();
             }
 
-            collGun.Dispose();
-            slowGun.Dispose();
+            foreach (CollectableGun cg in collGuns)
+            {
+                System.Console.WriteLine(cg.GameNode.Parent);
+                cg.Dispose();
+            }
 
-            //doubleScore.Dispose();
+            //foreach (PowerUp pu in PowerUps)
+            //{
+            //    pu.Dispose();
+            //}
+
+            //collGun.Dispose();
+            //slowGun.Dispose();
 
             environment.Dispose();
 
@@ -199,6 +252,21 @@ namespace RaceGame
             Enemies enemies = new Enemies(mSceneMgr);
             enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(0, 100), 100, Mogre.Math.RangeRandom(0, 100)));
             robots.Add(enemies);
+        }
+
+        private void AddCollGun()
+        {
+            CollectableGun CollGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
+            CollGun.SetPosition(new Vector3(-100, 50, 50));
+            collGuns.Add(CollGun);
+        }
+
+        private void AddPowerUp()
+        {
+            PowerUp powerUp = new Health(mSceneMgr, stat);
+            //powerUp.SetPosition(new Vector3(Mogre.Math.RangeRandom(0, 100), 100, Mogre.Math.RangeRandom(0, 100)));
+            powerUp.SetPosition(new Vector3(100, 50, 10));
+            PowerUps.Add(powerUp);
         }
 
         /// <summary>

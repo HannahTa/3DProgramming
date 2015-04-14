@@ -10,7 +10,6 @@ namespace RaceGame
     class DoubleScore : PowerUp
     {
         //PhysObj physObj;
-        SceneNode controlNode;
 
         //ModelElement midGemNode1;
         Entity doubleScoreEntity;
@@ -23,35 +22,27 @@ namespace RaceGame
             increase = 10;
             // initialize the stat field stat.Value = 10;
             LoadModel();
-            this.gameNode = doubleScoreNode;
         }
 
         protected override void LoadModel()
         {
-            //base.LoadModel();
-            // Load model for power up here
-
-            base.LoadModel();
-            // Load the geometry for the power up (gem) and the scene graph 
-            // nodes for it using as usual the gameNode and gameEntity
             doubleScoreEntity = mSceneMgr.CreateEntity("Bomb.mesh");
             doubleScoreNode = mSceneMgr.CreateSceneNode();
             doubleScoreNode.AttachObject(doubleScoreEntity);
 
-            controlNode = mSceneMgr.CreateSceneNode();
-            controlNode.AddChild(doubleScoreNode);
-            mSceneMgr.RootSceneNode.AddChild(controlNode);
+            mSceneMgr.RootSceneNode.AddChild(doubleScoreNode);
 
-            // Physics
-            float radius = 1;
-            controlNode.Position += radius * Vector3.UNIT_Y;
-            doubleScoreNode.Position += radius * Vector3.UNIT_Y;
+            this.gameNode = doubleScoreNode;
 
-            physObj = new PhysObj(radius, "DoubleScore", 0.1f, 0.7f, 0.3f);
-            physObj.SceneNode = controlNode;
-            physObj.Position = controlNode.Position;
-            physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            Physics.AddPhysObj(physObj);
+            base.LoadModel();
+        }
+
+        public override void Dispose()
+        {
+            Physics.RemovePhysObj(physObj);
+            physObj = null;
+
+            base.Dispose();
         }
     }
 }

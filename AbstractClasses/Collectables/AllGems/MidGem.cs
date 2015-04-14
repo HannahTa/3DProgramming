@@ -10,9 +10,6 @@ namespace RaceGame
 {
     class MidGem : Gem
     {
-        //PhysObj physObj;
-
-        //ModelElement midGemNode1;
         Entity midGemEntity;
         SceneNode midGemNode;
 
@@ -39,9 +36,11 @@ namespace RaceGame
 
         public override void Dispose()
         {
-            base.Dispose();
             Physics.RemovePhysObj(physObj);
             physObj = null;
-        }
+
+            base.Dispose();
+        }
+
     }
 }

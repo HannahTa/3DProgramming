@@ -29,8 +29,6 @@ namespace RaceGame
         protected virtual void LoadModel()
         {
             removeMe = false;
-            // The link with to phisics engine goes here
-            // (ignore until week 8) ...
             physObj = new PhysObj(7, "Gem", 0.3f, 0.5f);
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             physObj.SceneNode = gameNode;
@@ -53,7 +51,7 @@ namespace RaceGame
                 if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
                 {
                     isColliding = true;
-                    score.Increase(100);
+                    score.Increase(increase);
                     Dispose();
                     break;
                 }

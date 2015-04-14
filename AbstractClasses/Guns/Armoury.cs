@@ -83,22 +83,22 @@ namespace RaceGame
                 //(g.GetType() == gun.GetType());
                 //if they are both true then it calls reloadAmmo method for g
                 // Call the changegun method passing g to it and then set add to false
-                if (add == true && g.GetType() == gun.GetType())
+                if (add == true && (g.GetType() == gun.GetType()))
                 {
                     g.ReloadAmmo();
                     ChangeGun(g);
                     add = false;
-                }
+                } 
+            }
 
-                if (add == true)
-                {
-                    ChangeGun(gun);
-                    collectedGuns.Add(gun);
-                }
-                else
-                {
-                    gun.Dispose();
-                }
+            if (add == true)
+            {
+                ChangeGun(gun);
+                collectedGuns.Add(gun);
+            }
+            else
+            {
+                gun.Dispose();
             }
 
             // once foreach loop finished, check the add variable, if true then Call ChangeGun method, pass gun to it

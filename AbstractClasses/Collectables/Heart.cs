@@ -12,12 +12,12 @@ namespace RaceGame
         Entity heartEntity;
         SceneNode heartNode;
 
-        bool removeMe;
+        //bool removeMe;
 
-        public bool RemoveMe
-        {
-            get { return removeMe; }
-        }
+        //public bool RemoveMe
+        //{
+        //    get { return removeMe; }
+        //}
 
         public Heart(SceneManager mSceneMgr)
         {
@@ -27,18 +27,18 @@ namespace RaceGame
 
         protected void LoadModel()
         {
-            removeMe = false;
+            remove = false;
 
             heartEntity = mSceneMgr.CreateEntity("Heart.mesh");
 
             heartNode = mSceneMgr.CreateSceneNode();
-            heartNode.AttachObject(heartEntity);
             heartNode.Scale(5f, 5f, 5f);
+            heartNode.AttachObject(heartEntity);
             mSceneMgr.RootSceneNode.AddChild(heartNode);
 
             physObj = new PhysObj(7, "Heart", 0.3f, 0.5f);
-            physObj.AddForceToList(new WeightForce(physObj.InvMass));
             physObj.SceneNode = heartNode;
+            physObj.AddForceToList(new WeightForce(physObj.InvMass));
 
             Physics.AddPhysObj(physObj);
 
@@ -47,15 +47,18 @@ namespace RaceGame
 
         public override void Update(FrameEvent evt)
         {
-            removeMe = IsCollidingWith("Player");
+            //System.Console.WriteLine(physObj.CollisionList.Count);
+            remove = IsCollidingWith("Player");
             //base.Update(evt);
         }
 
         private bool IsCollidingWith(string objName)
         {
+            //System.Console.WriteLine(physObj.CollisionList.Count);
             bool isColliding = false;
             foreach (Contacts c in physObj.CollisionList)
             {
+                System.Console.WriteLine("InCollision");
                 if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
                 {
                     isColliding = true;

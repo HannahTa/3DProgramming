@@ -25,7 +25,7 @@ namespace RaceGame
             this.initialVelocity = speed * this.initialDirection;
 
             Load();
-            this.gameNode = sProjNode;
+            //this.gameNode = sProjNode;
         }
 
         protected override void Load()
@@ -47,8 +47,10 @@ namespace RaceGame
             physObj.SceneNode = sProjNode;
             physObj.Position = sProjNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            
+
             Physics.AddPhysObj(physObj);
+
+            this.gameNode = sProjNode;
         }
 
         protected void Update()

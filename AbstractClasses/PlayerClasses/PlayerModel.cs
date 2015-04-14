@@ -70,7 +70,7 @@ namespace RaceGame
             controlNode.AddChild(modelNode);
             mSceneMgr.RootSceneNode.AddChild(controlNode);
             
-            float radius = 50;
+            float radius = 10;
             controlNode.Position += radius * Vector3.UNIT_Y;
             modelNode.Position -= radius * Vector3.UNIT_Y;
 
@@ -80,8 +80,8 @@ namespace RaceGame
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             //physObj.AddForceToList(new FrictionForce(physObj));
             Physics.AddPhysObj(physObj);
-            System.Console.WriteLine(physObj.CollisionList);
-            this.gameNode = modelNode;
+            System.Console.WriteLine(physObj.ID);
+            this.gameNode = controlNode;
             
             //base.AssembleModel();
         }

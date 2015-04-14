@@ -9,10 +9,10 @@ namespace RaceGame
 {
     class SlowGun : Gun
     {
-        //ModelElement slowGunNode;
+        ModelElement slowGunNode;
 
-        SceneNode slowGunNode;
-        Entity slowGunEntity;
+        //SceneNode slowGunNode;
+        //Entity slowGunEntity;
 
         public SlowGun(SceneManager mSceneMgr)
         {
@@ -32,15 +32,15 @@ namespace RaceGame
          **/
         protected override void LoadModel()
         {
-            //slowGunNode = new ModelElement(mSceneMgr, "Sphere.mesh");
-            slowGunEntity = mSceneMgr.CreateEntity("Sphere.mesh");
+            slowGunNode = new ModelElement(mSceneMgr, "Sphere.mesh");
+            //slowGunEntity = mSceneMgr.CreateEntity("Sphere.mesh");
 
-            slowGunNode = mSceneMgr.CreateSceneNode();
-            slowGunNode.AttachObject(slowGunEntity);
-            slowGunNode.Scale(1f, 1f, 1f);
-            //mSceneMgr.RootSceneNode.AddChild(slowGunNode);
+            //slowGunNode = mSceneMgr.CreateSceneNode();
+            //slowGunNode.AttachObject(slowGunEntity);
+            //slowGunNode.GameNode.Scale(0.5f, 0.5f, 0.5f);
+            //mSceneMgr.RootSceneNode.AddChild(slowGunNode.GameNode);
             
-            this.gameNode = slowGunNode;
+            this.gameNode = slowGunNode.GameNode;
             base.LoadModel();
         }
 
