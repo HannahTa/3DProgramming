@@ -50,8 +50,11 @@ namespace RaceGame
         public override void Shoot()
         {
             //base.Shoot();
-            System.Console.WriteLine(playerArmoury.ActiveGun);
-            playerArmoury.ActiveGun.Fire();
+            //System.Console.WriteLine(playerArmoury.ActiveGun);
+            if (playerArmoury.ActiveGun != null)
+            {
+                playerArmoury.ActiveGun.Fire();
+            } 
         }
     }
 }

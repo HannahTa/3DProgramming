@@ -11,9 +11,6 @@ namespace RaceGame
     {
         ModelElement slowGunNode;
 
-        //SceneNode slowGunNode;
-        //Entity slowGunEntity;
-
         public SlowGun(SceneManager mSceneMgr)
         {
             this.mSceneMgr = mSceneMgr;
@@ -33,12 +30,6 @@ namespace RaceGame
         protected override void LoadModel()
         {
             slowGunNode = new ModelElement(mSceneMgr, "Sphere.mesh");
-            //slowGunEntity = mSceneMgr.CreateEntity("Sphere.mesh");
-
-            //slowGunNode = mSceneMgr.CreateSceneNode();
-            //slowGunNode.AttachObject(slowGunEntity);
-            //slowGunNode.GameNode.Scale(0.5f, 0.5f, 0.5f);
-            //mSceneMgr.RootSceneNode.AddChild(slowGunNode.GameNode);
             
             this.gameNode = slowGunNode.GameNode;
             base.LoadModel();
@@ -47,14 +38,15 @@ namespace RaceGame
         public override void Fire()
         {
             //base.Fire();
-            if (ammo.Value == 0)
+            //if (ammo.Value == 0)
+            //{
+            //    ReloadAmmo();   // Reloads if ammo.Value = 0 when trying to fire
+            //}
+            //else
+            if ( ammo.Value != 0 )
             {
-                ReloadAmmo();   // Reloads if ammo.Value = 0 when trying to fire
-            }
-            else
-            {
-                Projectile SP = new SlowProjectile(mSceneMgr);
-                SP.SetPosition(GunPosition() + 2 * GunDirection());
+                projectile = new SlowProjectile(mSceneMgr);
+                projectile.SetPosition(GunPosition() + 4 * GunDirection());
                 ammo.Decrease(1);   // Decrease ammo by 1
             }
         }

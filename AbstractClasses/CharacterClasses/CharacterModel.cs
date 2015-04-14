@@ -69,7 +69,7 @@ namespace RaceGame
         public override void Dispose()
         {
             DisposeModel();
-            //base.Dispose();
+            base.Dispose();
         }
 
     }

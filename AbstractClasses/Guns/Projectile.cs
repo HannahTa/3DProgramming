@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mogre;
+using PhysicsEng;
 
 namespace RaceGame
 {
     abstract class Projectile:MovableElement
     {
         Timer time;
-        protected int maxTime = 1000;
+        protected int maxTime = 2000;
         protected Vector3 initialVelocity;
         protected float speed;
         protected Vector3 initialDirection;
@@ -31,7 +32,21 @@ namespace RaceGame
             get { return shieldDamage; }
         }
 
-        virtual protected void Load() { }
+        virtual protected void Load() 
+        {
+            // Physics
+            float radius = 10;
+
+            //sProjNode.Position -= radius * Vector3.UNIT_Y;
+
+            physObj = new PhysObj(radius, "Projectile", 0.1f, 0.7f, 0.3f);
+            physObj.SceneNode = gameNode;
+            physObj.Position = gameNode.Position;
+            physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            physObj.AddForceToList(new FrictionForce(physObj));//Friction
+
+            Physics.AddPhysObj(physObj);
+        }
 
         protected Projectile()
         {
@@ -52,8 +67,29 @@ namespace RaceGame
             if (!remove && time.Milliseconds > maxTime)
             {
                 Dispose();
+
                 remove = true;
             }
+            else
+            {
+                remove = IsCollidingWith("Robot");
+            }
+        }
+
+        public bool IsCollidingWith(string objName)
+        {
+            bool isColliding = false;
+            foreach (Contacts c in physObj.CollisionList)
+            {
+                if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
+                {
+                    isColliding = true;
+                    System.Console.WriteLine("Oi");
+                    Dispose();
+                    break;
+                }
+            }
+            return isColliding;
         }
     }
 }

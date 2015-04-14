@@ -35,22 +35,40 @@ namespace RaceGame
         protected override void AssembleModel()
         {
             // Attach and assemble model
-            //mSceneMgr.RootSceneNode.AddChild(enemyNode1.GameNode);
-
             mSceneMgr.RootSceneNode.AddChild(enemyNode1.GameNode);
 
             // Physics
-            float radius = 1;
+            float radius = 9;
 
             physObj = new PhysObj(radius, "Robot", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = enemyNode1.GameNode;
             physObj.Position = enemyNode1.GameNode.Position;
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
+            
             Physics.AddPhysObj(physObj);
 
             this.gameNode = enemyNode1.GameNode;
+        }
 
-            //base.AssembleModel();
+        public void Update(FrameEvent evt)
+        {
+            remove = IsCollidingWith("Projectile");
+        }
+
+        public bool IsCollidingWith(string objName)
+        {
+            bool isColliding = false;
+            foreach (Contacts c in physObj.CollisionList)
+            {
+                if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
+                {
+                    isColliding = true;
+                    System.Console.WriteLine("Ow");
+                    Dispose();
+                    break;
+                }
+            }
+            return isColliding;
         }
     }
 }

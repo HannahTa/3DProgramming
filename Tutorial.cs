@@ -35,6 +35,9 @@ namespace RaceGame
         List<CollectableGun> collGuns;
         List<CollectableGun> collGunsToRemove;
 
+        List<Projectile> projList;
+        List<Projectile> projListToRemove;
+
         List<Enemies> robots;
         List<Enemies> robotsToRemove;
 
@@ -67,7 +70,7 @@ namespace RaceGame
 
             // -Power-ups-
             stat = new Score();
-            midGem = new MidGem(mSceneMgr, stat);
+            midGem = new MidGem(mSceneMgr, playerStats.Score);
             midGem.SetPosition(new Vector3(-50, 100, 50));
 
             slowGun = new SlowGun(mSceneMgr);
@@ -83,8 +86,14 @@ namespace RaceGame
             collGuns = new List<CollectableGun>();
             collGunsToRemove = new List<CollectableGun>();
 
+            projList = new List<Projectile>();
+            projListToRemove = new List<Projectile>();
+
             PowerUps = new List<PowerUp>();
             powerUpsToRemove = new List<PowerUp>();
+
+            robots = new List<Enemies>();
+            robotsToRemove = new List<Enemies>();
 
             Gems.Add(midGem);
             //PowerUps.Add(health);
@@ -98,8 +107,9 @@ namespace RaceGame
 
             // Enemies
             //enemies = new Enemies(mSceneMgr);
-            //robots = new List<Enemies>();
-            //AddRobot();
+            robots = new List<Enemies>();
+            robotsToRemove = new List<Enemies>();
+            AddRobot();
 
             //collGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
             //collGun.SetPosition(new Vector3(50, 0, 0));
@@ -125,13 +135,46 @@ namespace RaceGame
             physics.UpdatePhysics(0.01f);
             base.UpdateScene(evt);
 
-            //heart.Update(evt);
-
             if (shoot)
             {
-                // shoot the gun
-                player.Shoot();
+                if (player.PlayerArmoury.ActiveGun != null && player.PlayerArmoury.ActiveGun.Ammo.Value != 0)
+                {
+                    player.Shoot();
+                    projList.Add(player.PlayerArmoury.ActiveGun.Projectile);
+                }
             }
+
+            foreach (Projectile p in projList)
+            {
+                p.Update(evt);
+                if (p.RemoveMe)
+                {
+                    projListToRemove.Add(p);
+                }
+            }
+
+            foreach (Projectile p in projListToRemove)
+            {
+                projList.Remove(p);
+                p.Dispose();
+            }
+            projListToRemove.Clear();
+
+            foreach (Enemies e in robots)
+            {
+                e.Update(evt);
+                if (e.Model.RemoveMe)
+                {
+                    robotsToRemove.Add(e);
+                }
+            }
+
+            foreach (Enemies e in robotsToRemove)
+            {
+                robots.Remove(e);
+                e.Model.Dispose();
+            }
+            robotsToRemove.Clear();
 
             foreach (Gem g in Gems)
             {
@@ -184,6 +227,8 @@ namespace RaceGame
             player.Update(evt);
             
             mCamera.LookAt(player.Position);
+
+            shoot = false;
         }
 
         /// <summary>
@@ -207,10 +252,10 @@ namespace RaceGame
             //{
             //    enemies.Model.DisposeModel();
             //}
-            //foreach (Enemies e in robots)
-            //{
-            //    e.Model.Dispose();
-            //}
+            foreach (Enemies e in robots)
+            {
+                e.Model.Dispose();
+            }
 
             if (midGem != null)
             {

@@ -29,14 +29,7 @@ namespace RaceGame
             this.gun = gun;
             this.playerArmoury = playerArmoury;
 
-            
-            //this.gameNode.Scale(new Vector3(1.5f, 1.5f, 1.5f));
-
             collGunNode = mSceneMgr.CreateSceneNode();
-            //this.gameNode = collGunNode;
-
-            //this.gameNode.Scale(new Vector3(1.5f, 1.5f, 1.5f));
-            //this.gameNode.AddChild(gun.GameNode);
             collGunNode.AddChild(gun.GameNode);
             mSceneMgr.RootSceneNode.AddChild(collGunNode);// <--
 

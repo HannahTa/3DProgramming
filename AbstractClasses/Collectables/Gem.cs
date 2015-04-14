@@ -13,12 +13,12 @@ namespace RaceGame
         protected Stat score;
         protected int increase;
 
-        bool removeMe;
+        //bool removeMe;
 
-        public bool RemoveMe
-        {
-            get { return removeMe; }
-        }
+        //public bool RemoveMe
+        //{
+        //    get { return removeMe; }
+        //}
 
         protected Gem(SceneManager mSceneMgr, Stat score)
         {
@@ -28,7 +28,7 @@ namespace RaceGame
 
         protected virtual void LoadModel()
         {
-            removeMe = false;
+            remove = false;
             physObj = new PhysObj(7, "Gem", 0.3f, 0.5f);
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             physObj.SceneNode = gameNode;
@@ -39,7 +39,7 @@ namespace RaceGame
         public override void Update(FrameEvent evt)
         {
             Animate(evt);
-            removeMe = IsCollidingWith("Player");
+            remove = IsCollidingWith("Player");
             //base.Update(evt);
         }
 

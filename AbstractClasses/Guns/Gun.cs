@@ -11,6 +11,7 @@ namespace RaceGame
         public Projectile Projectile
         {
             set { projectile = value; }
+            get { return projectile; } //??
         }
 
         protected Stat ammo;

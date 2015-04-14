@@ -80,7 +80,6 @@ namespace RaceGame
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
             //physObj.AddForceToList(new FrictionForce(physObj));
             Physics.AddPhysObj(physObj);
-            System.Console.WriteLine(physObj.ID);
             this.gameNode = controlNode;
             
             //base.AssembleModel();
@@ -123,8 +122,6 @@ namespace RaceGame
             modelNode.Parent.RemoveChild(modelNode);
             modelNode.DetachAllObjects();
             modelNode.Dispose();
-
-            
 
             //playerSphereNode.Dispose();
             //playerMainNode.Dispose(); // Main gets deleted last as that is the parent node
