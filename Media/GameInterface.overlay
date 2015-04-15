@@ -9,7 +9,18 @@ GameInterface
 		width        1024
 		height       60
 		
-		container Panel(GameOver/Panel)
+		element TextArea(GameOverText)
+		{
+			metrics_mode  pixels
+			left          512
+			top           6
+			font_name     BlueHighway
+			char_height   30
+			alignment     center
+			colour        1 1 1
+		}
+
+		container Panel(GameOver)
 		{
 			width		  1
 			height	  1
@@ -57,6 +68,5 @@ GameInterface
 			alignment     center
 			colour        1 0 0
 		}
-
 	}
 }

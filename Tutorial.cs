@@ -13,6 +13,7 @@ namespace RaceGame
         //TimeIndex time;
 
         int level = 1;
+        int gemCount = 0;
 
         static public bool shoot;
 
@@ -21,6 +22,7 @@ namespace RaceGame
         //Enemies enemies;
 
         Score stat;
+        PlayerStats playerStats;
 
         Gun slowGun;
 
@@ -59,9 +61,8 @@ namespace RaceGame
             physics = new Physics();
 
             // GUI
-            PlayerStats playerStats = new PlayerStats();
+            playerStats = new PlayerStats();
             gameHMD = new GameInterface(mSceneMgr, mWindow, playerStats);
-            //gameHMD.Time = new Timer();
 
             // Environment
             mSceneMgr.ShadowTechnique = ShadowTechnique.SHADOWTYPE_STENCIL_MODULATIVE;
@@ -70,13 +71,7 @@ namespace RaceGame
             // -Power-ups-
             stat = new Score();
             
-
             slowGun = new SlowGun(mSceneMgr);
-
-            //health = new Health(mSceneMgr, stat);
-            //health.SetPosition(new Vector3(100, 50, -50));
-
-            //doubleScore = new DoubleScore(mSceneMgr);
 
             Gems = new List<Gem>();
             gemsToRemove = new List<Gem>();
@@ -93,9 +88,6 @@ namespace RaceGame
             robots = new List<Enemies>();
             robotsToRemove = new List<Enemies>();
 
-            //Gems.Add(midGem);
-            //PowerUps.Add(health);
-
             // Player
             player = new Player(mSceneMgr);
 
@@ -109,19 +101,13 @@ namespace RaceGame
                 AddPowerUp(playerStats.Health, playerStats.Shield, playerStats.Lives);
             }
 
-            //AddGem(playerStats.Score);
-            //AddGem(playerStats.Score);
             AddCollGun();
-            
 
             // Enemies
             //enemies = new Enemies(mSceneMgr);
             robots = new List<Enemies>();
             robotsToRemove = new List<Enemies>();
-            AddRobot();
-
-            //collGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
-            //collGun.SetPosition(new Vector3(50, 0, 0));
+            //AddRobot();
 
             // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
@@ -143,6 +129,12 @@ namespace RaceGame
         {
             physics.UpdatePhysics(0.01f);
             base.UpdateScene(evt);
+
+            if (gemCount == 5)
+            {
+                AddGem(playerStats.Score);
+                gemCount++;
+            }
 
             if (gameHMD.ClockText == "0:00")
             {
@@ -198,6 +190,7 @@ namespace RaceGame
                 if (g.RemoveMe)
                 {
                     gemsToRemove.Add(g);
+                    gemCount++;
                 }
             }
 
@@ -241,13 +234,7 @@ namespace RaceGame
             powerUpsToRemove.Clear();
 
             gameHMD.Update(evt);
-            
             player.Update(evt);
-            //if (player.Model.RemoveMe)
-            //{
-            //    player.Stats.Health.Decrease(10);
-            //    //player.Model.RemoveMe = false;
-            //}
             
             mCamera.LookAt(player.Position);
 

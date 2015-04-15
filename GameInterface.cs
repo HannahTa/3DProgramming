@@ -11,6 +11,8 @@ namespace RaceGame
         private PanelOverlayElement panel;
         private OverlayElement scoreText;
         private OverlayElement timeText;
+        private OverlayElement gameOverText;
+        private PanelOverlayElement gameOver;
 
         private OverlayElement healthBar;
         private OverlayElement shieldBar;
@@ -28,6 +30,7 @@ namespace RaceGame
         private float sRatio;
         private string score = "Score: ";
         private string timer = "Time Left: ";
+        private string gameOverTime = "Time up! Game Over! Press Esc";
         private float clock = 10000;
 
         public string clockText;
@@ -68,6 +71,15 @@ namespace RaceGame
             timeText.Left = mWindow.Width * 0.5f;
             timeText.Top = mWindow.Height * 0.05f;
             
+            gameOverText = OverlayManager.Singleton.GetOverlayElement("GameOverText");
+            gameOverText.Caption = gameOverTime;
+            gameOverText.Left = mWindow.Width * 0.5f;
+            gameOverText.Top = mWindow.Height * 0.1f;
+            gameOverText.Hide();
+            
+            gameOver = (PanelOverlayElement)OverlayManager.Singleton.GetOverlayElement("GameOver");
+            gameOver.Hide();
+
             panel = (PanelOverlayElement)OverlayManager.Singleton.GetOverlayElement("GreenBackground");
             panel.Width = mWindow.Width;
             LoadOverlay3D();
@@ -164,7 +176,12 @@ namespace RaceGame
             if (clockText == "0:00")
             {
                 //clockText = "0:00";
-                //OverlayManager.Singleton.GetByName("Red").Show();
+                gameOverText.Show();
+                gameOver.Show();
+                timeText.Hide();
+                scoreText.Hide();
+                healthBar.Hide();
+                
             }
             //else
             //{
@@ -200,6 +217,8 @@ namespace RaceGame
             scoreText.Dispose();
             timeText.Dispose();
             time.Dispose();
+            gameOverText.Dispose();
+            gameOver.Dispose();
             panel.Dispose();
             overlay3D.Dispose();
             base.Dispose();
