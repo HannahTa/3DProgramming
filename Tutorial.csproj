@@ -53,7 +53,9 @@
     <Compile Include="AbstractClasses\CharacterClasses\CharacterController.cs" />
     <Compile Include="AbstractClasses\CharacterClasses\CharacterModel.cs" />
     <Compile Include="AbstractClasses\CharacterClasses\CharacterStats.cs" />
+    <Compile Include="AbstractClasses\Collectables\AllGems\LargeGem.cs" />
     <Compile Include="AbstractClasses\Collectables\AllGems\MidGem.cs" />
+    <Compile Include="AbstractClasses\Collectables\AllGems\SmallGem.cs" />
     <Compile Include="AbstractClasses\Collectables\AllPowerUps\DoubleScore.cs" />
     <Compile Include="AbstractClasses\Collectables\AllPowerUps\Health.cs" />
     <Compile Include="AbstractClasses\Collectables\Collectable.cs" />

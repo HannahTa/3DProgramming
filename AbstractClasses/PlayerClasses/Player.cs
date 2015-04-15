@@ -44,6 +44,11 @@ namespace RaceGame
                 playerArmoury.GunChanged = false;       // If was always true, would continualy change guns
             }
 
+            //if (model.RemoveMe == true)
+            //{
+
+            //}
+
             base.Update(evt);
         }
         
@@ -56,5 +61,6 @@ namespace RaceGame
                 playerArmoury.ActiveGun.Fire();
             } 
         }
+
     }
 }

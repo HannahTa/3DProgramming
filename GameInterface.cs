@@ -161,15 +161,15 @@ namespace RaceGame
 
             timeText.Caption = timer + clockText;
             clockText = convertTime(clock - time.Milliseconds);
-            if (convertTime(clock - time.Milliseconds) == "0:00")
-            {
-                clockText = "0:00";
-            }
-            else
-            {
-                clockText = convertTime(clock - time.Milliseconds);
-            }
-            System.Console.WriteLine(clockText);
+            //if (convertTime(clock - time.Milliseconds) == "0:00")
+            //{
+            //    clockText = "0:00";
+            //}
+            //else
+            //{
+            //    clockText = convertTime(clock - time.Milliseconds);
+            //}
+            //System.Console.WriteLine(clockText);
 
         }
 

@@ -19,7 +19,7 @@ namespace RaceGame
         //Enemies enemies;
 
         Score stat;
-        Gem midGem;
+        //Gem midGem;
         //PowerUp health;
         //DoubleScore doubleScore;
 
@@ -70,8 +70,7 @@ namespace RaceGame
 
             // -Power-ups-
             stat = new Score();
-            midGem = new MidGem(mSceneMgr, playerStats.Score);
-            midGem.SetPosition(new Vector3(-50, 100, 50));
+            
 
             slowGun = new SlowGun(mSceneMgr);
 
@@ -95,14 +94,22 @@ namespace RaceGame
             robots = new List<Enemies>();
             robotsToRemove = new List<Enemies>();
 
-            Gems.Add(midGem);
+            //Gems.Add(midGem);
             //PowerUps.Add(health);
             //AddPowerUp();
+            
             
 
             // Player
             player = new Player(mSceneMgr);
-            
+
+            for (int i = 0; i < 5; i++)
+            {
+                AddGem(playerStats.Score);
+            }
+
+            //AddGem(playerStats.Score);
+            //AddGem(playerStats.Score);
             AddCollGun();
 
             // Enemies
@@ -232,6 +239,11 @@ namespace RaceGame
             gameHMD.Update(evt);
             
             player.Update(evt);
+            //if (player.Model.RemoveMe)
+            //{
+            //    player.Stats.Health.Decrease(10);
+            //    //player.Model.RemoveMe = false;
+            //}
             
             mCamera.LookAt(player.Position);
 
@@ -264,10 +276,10 @@ namespace RaceGame
                 e.Model.Dispose();
             }
 
-            if (midGem != null)
-            {
-                midGem.Dispose();
-            }
+            //if (midGem != null)
+            //{
+            //    midGem.Dispose();
+            //}
 
             ////midGem.Dispose();
 
@@ -310,6 +322,36 @@ namespace RaceGame
             Enemies enemies = new Enemies(mSceneMgr);
             enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(0, 100), 100, Mogre.Math.RangeRandom(0, 100)));
             robots.Add(enemies);
+        }
+
+        /*
+         * Randomly loads three types of Gems (small, midium and large)
+         **/
+        private void AddGem(Stat score)
+        {
+            int count = (int)Mogre.Math.RangeRandom(0, 12);
+
+            //Gem midGem = new MidGem(mSceneMgr, score);
+            //Gem smallGem = new SmallGem(mSceneMgr, score);
+
+            if (count > 10)
+            {
+                Gem largeGem = new LargeGem(mSceneMgr, score);
+                largeGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-200, 200), 50, Mogre.Math.RangeRandom(-200, 200)));
+                Gems.Add(largeGem);
+            }
+            else if (count % 2 != 0)
+            {
+                Gem midGem = new MidGem(mSceneMgr, score);
+                midGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-200, 200), 50, Mogre.Math.RangeRandom(-200, 200)));
+                Gems.Add(midGem);
+            }
+            else
+            {
+                Gem smallGem = new SmallGem(mSceneMgr, score);
+                smallGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-200, 200), 50, Mogre.Math.RangeRandom(-200, 200)));
+                Gems.Add(smallGem);
+            }
         }
 
         private void AddCollGun()
