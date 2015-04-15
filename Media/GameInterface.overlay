@@ -39,5 +39,17 @@ GameInterface
 			alignment     center
 			colour        1 0 0
 		}
+		
+		element TextArea(TimeText)
+		{
+			metrics_mode  pixels
+			left          512
+			top           6
+			font_name     BlueHighway
+			char_height   30
+			alignment     center
+			colour        1 0 0
+		}
+
 	}
 }

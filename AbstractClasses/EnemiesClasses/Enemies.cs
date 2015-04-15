@@ -24,6 +24,7 @@ namespace RaceGame
         {
             //model.Animate();
             controller.Update(evt);
+            //model.RemoveMe
             base.Update(evt);
         }
 

@@ -10,6 +10,7 @@ namespace RaceGame
     {
         private PanelOverlayElement panel;
         private OverlayElement scoreText;
+        private OverlayElement timeText;
 
         private OverlayElement healthBar;
         private OverlayElement shieldBar;
@@ -26,6 +27,14 @@ namespace RaceGame
         private float hRatio;
         private float sRatio;
         private string score = "Score: ";
+        private string timer = "Time Left: ";
+        private float clock = 10000;
+
+        public string clockText;
+        public string ClockText
+        {
+            get { return clockText; }
+        }
 
         public GameInterface(SceneManager mSceneMgr, RenderWindow mWindow, CharacterStats playerStats)
             : base(mSceneMgr, mWindow, playerStats)
@@ -38,6 +47,10 @@ namespace RaceGame
             base.Load(name);
 
             lives = new List<SceneNode>();
+            //time = new Timer();
+            //time = new System.Timers.Timer(10000);
+            time = new Mogre.Timer();
+            //time.Milliseconds();
 
             healthBar = OverlayManager.Singleton.GetOverlayElement("HealthBar");
             hRatio = healthBar.Width / (float)characterStats.Health.Max;
@@ -49,6 +62,12 @@ namespace RaceGame
             scoreText.Caption = score;
             scoreText.Left = mWindow.Width * 0.5f;
 
+            //OverlayManager.Singleton.CreateOverlayElement("timeText", "TimeText");
+            timeText = OverlayManager.Singleton.GetOverlayElement("TimeText");
+            timeText.Caption = timer;
+            timeText.Left = mWindow.Width * 0.5f;
+            timeText.Top = mWindow.Height * 0.05f;
+            
             panel = (PanelOverlayElement)OverlayManager.Singleton.GetOverlayElement("GreenBackground");
             panel.Width = mWindow.Width;
             LoadOverlay3D();
@@ -139,6 +158,19 @@ namespace RaceGame
             healthBar.Width = hRatio * characterStats.Health.Value;
             shieldBar.Width = sRatio * characterStats.Shield.Value;
             scoreText.Caption = score + ((PlayerStats)characterStats).Score.Value;
+
+            timeText.Caption = timer + clockText;
+            clockText = convertTime(clock - time.Milliseconds);
+            if (convertTime(clock - time.Milliseconds) == "0:00")
+            {
+                clockText = "0:00";
+            }
+            else
+            {
+                clockText = convertTime(clock - time.Milliseconds);
+            }
+            System.Console.WriteLine(clockText);
+
         }
 
         protected override void Animate(FrameEvent evt)
@@ -165,6 +197,8 @@ namespace RaceGame
             shieldBar.Dispose();
             healthBar.Dispose();
             scoreText.Dispose();
+            timeText.Dispose();
+            time.Dispose();
             panel.Dispose();
             overlay3D.Dispose();
             base.Dispose();

@@ -85,6 +85,7 @@ namespace RaceGame
                 {
                     isColliding = true;
                     System.Console.WriteLine("Oi");
+                    
                     Dispose();
                     break;
                 }

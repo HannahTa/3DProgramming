@@ -10,10 +10,10 @@ namespace RaceGame
     class Tutorial : BaseApplication
     {
         GameInterface gameHMD;
+        //TimeIndex time;
 
         static public bool shoot;
 
-        //Wall wall;
         Environment environment;
         Player player;
         //Enemies enemies;
@@ -21,9 +21,8 @@ namespace RaceGame
         Score stat;
         Gem midGem;
         //PowerUp health;
-        DoubleScore doubleScore;
+        //DoubleScore doubleScore;
 
-        //CollectableGun collGun;
         Gun slowGun;
 
         List<Gem> Gems;
@@ -63,6 +62,7 @@ namespace RaceGame
             // GUI
             PlayerStats playerStats = new PlayerStats();
             gameHMD = new GameInterface(mSceneMgr, mWindow, playerStats);
+            //gameHMD.Time = new Timer();
 
             // Environment
             mSceneMgr.ShadowTechnique = ShadowTechnique.SHADOWTYPE_STENCIL_MODULATIVE;
@@ -134,6 +134,12 @@ namespace RaceGame
         {
             physics.UpdatePhysics(0.01f);
             base.UpdateScene(evt);
+
+            if (gameHMD.ClockText == "0:00")
+            {
+                //this.DestroyScene();
+                //this.Shutdown();
+            }
 
             if (shoot)
             {
@@ -224,6 +230,7 @@ namespace RaceGame
             //powerUpsToRemove.Clear();
 
             gameHMD.Update(evt);
+            
             player.Update(evt);
             
             mCamera.LookAt(player.Position);
@@ -275,6 +282,11 @@ namespace RaceGame
                 cg.Dispose();
             }
 
+            foreach (Projectile p in projList)
+            {
+                p.Dispose();
+            }
+
             //foreach (PowerUp pu in PowerUps)
             //{
             //    pu.Dispose();
@@ -286,6 +298,7 @@ namespace RaceGame
             environment.Dispose();
 
             gameHMD.Dispose();
+            
             physics.Dispose();
         }
 
