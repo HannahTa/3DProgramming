@@ -6,12 +6,12 @@ namespace RaceGame
 {
     abstract class PowerUp:Collectable
     {
-        bool removeMe;
+        //bool removeMe;
 
-        public bool RemoveMe
-        {
-            get { return removeMe; }
-        }
+        //public bool RemoveMe
+        //{
+        //    get { return removeMe; }
+        //}
 
         protected Stat stat;
         public Stat Stat

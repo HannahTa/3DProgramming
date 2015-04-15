@@ -70,7 +70,7 @@ namespace RaceGame
             controlNode.AddChild(modelNode);
             mSceneMgr.RootSceneNode.AddChild(controlNode);
             
-            float radius = 10;
+            float radius = 12;
             controlNode.Position += radius * Vector3.UNIT_Y;
             modelNode.Position -= radius * Vector3.UNIT_Y;
 

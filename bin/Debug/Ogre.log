@@ -1,309 +1,307 @@
-13:36:04: Creating resource group General
-13:36:04: Creating resource group Internal
-13:36:04: Creating resource group Autodetect
-13:36:04: SceneManagerFactory for type 'DefaultSceneManager' registered.
-13:36:04: Registering ResourceManager for type Material
-13:36:04: Registering ResourceManager for type Mesh
-13:36:04: Registering ResourceManager for type Skeleton
-13:36:04: MovableObjectFactory for type 'ParticleSystem' registered.
-13:36:04: OverlayElementFactory for type Panel registered.
-13:36:04: OverlayElementFactory for type BorderPanel registered.
-13:36:04: OverlayElementFactory for type TextArea registered.
-13:36:04: Registering ResourceManager for type Font
-13:36:04: ArchiveFactory for archive type FileSystem registered.
-13:36:04: ArchiveFactory for archive type Zip registered.
-13:36:04: DDS codec registering
-13:36:04: FreeImage version: 3.13.1
-13:36:04: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
-13:36:04: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
-13:36:04: PVRTC codec registering
-13:36:04: Registering ResourceManager for type HighLevelGpuProgram
-13:36:04: Registering ResourceManager for type Compositor
-13:36:04: MovableObjectFactory for type 'Entity' registered.
-13:36:04: MovableObjectFactory for type 'Light' registered.
-13:36:04: MovableObjectFactory for type 'BillboardSet' registered.
-13:36:04: MovableObjectFactory for type 'ManualObject' registered.
-13:36:04: MovableObjectFactory for type 'BillboardChain' registered.
-13:36:04: MovableObjectFactory for type 'RibbonTrail' registered.
-13:36:04: Loading library .\RenderSystem_Direct3D9
-13:36:04: Installing plugin: D3D9 RenderSystem
-13:36:04: D3D9 : Direct3D9 Rendering Subsystem created.
-13:36:04: D3D9: Driver Detection Starts
-13:36:04: D3D9: Driver Detection Ends
-13:36:04: Plugin successfully installed
-13:36:04: Loading library .\RenderSystem_GL
-13:36:04: Installing plugin: GL RenderSystem
-13:36:04: OpenGL Rendering Subsystem created.
-13:36:05: Plugin successfully installed
-13:36:05: Loading library .\Plugin_OctreeSceneManager
-13:36:05: Installing plugin: Octree & Terrain Scene Manager
-13:36:05: Plugin successfully installed
-13:36:05: *-*-* OGRE Initialising
-13:36:05: *-*-* Version 1.7.1 (Cthugha)
-13:36:05: D3D9 : RenderSystem Option: Allow NVPerfHUD = No
-13:36:05: D3D9 : RenderSystem Option: FSAA = 0
-13:36:05: D3D9 : RenderSystem Option: Floating-point mode = Fastest
-13:36:05: D3D9 : RenderSystem Option: Full Screen = No
-13:36:05: D3D9 : RenderSystem Option: Rendering Device = Monitor-1-AMD Radeon HD 8400
-13:36:05: D3D9 : RenderSystem Option: Resource Creation Policy = Create on all devices
-13:36:05: D3D9 : RenderSystem Option: VSync = No
-13:36:05: D3D9 : RenderSystem Option: VSync Interval = 1
-13:36:05: D3D9 : RenderSystem Option: Video Mode = 800 x 600 @ 32-bit colour
-13:36:05: D3D9 : RenderSystem Option: sRGB Gamma Conversion = No
-13:36:06: CPU Identifier & Features
-13:36:06: -------------------------
-13:36:06:  *   CPU ID: AuthenticAMD: AMD A6-5200 APU with Radeon(TM) HD Graphics
-13:36:06:  *      SSE: yes
-13:36:06:  *     SSE2: yes
-13:36:06:  *     SSE3: yes
-13:36:06:  *      MMX: yes
-13:36:06:  *   MMXEXT: yes
-13:36:06:  *    3DNOW: no
-13:36:06:  * 3DNOWEXT: no
-13:36:06:  *     CMOV: yes
-13:36:06:  *      TSC: yes
-13:36:06:  *      FPU: yes
-13:36:06:  *      PRO: yes
-13:36:06:  *       HT: no
-13:36:06: -------------------------
-13:36:06: D3D9 : Subsystem Initialising
-13:36:06: Registering ResourceManager for type Texture
-13:36:06: Registering ResourceManager for type GpuProgram
-13:36:06: D3D9RenderSystem::_createRenderWindow "TutorialApplication Render Window", 800x600 windowed  miscParams: FSAA=0 FSAAHint= colourDepth=32 gamma=false monitorIndex=0 useNVPerfHUD=false vsync=false vsyncInterval=1 
-13:36:06: D3D9 : Created D3D9 Rendering Window 'TutorialApplication Render Window' : 800x600, 32bpp
-13:36:06: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
-13:36:06: D3D9: Vertex texture format supported - PF_L8
-13:36:06: D3D9: Vertex texture format supported - PF_L16
-13:36:06: D3D9: Vertex texture format supported - PF_A8
-13:36:06: D3D9: Vertex texture format supported - PF_A4L4
-13:36:06: D3D9: Vertex texture format supported - PF_BYTE_LA
-13:36:06: D3D9: Vertex texture format supported - PF_R5G6B5
-13:36:06: D3D9: Vertex texture format supported - PF_B5G6R5
-13:36:06: D3D9: Vertex texture format supported - PF_A4R4G4B4
-13:36:06: D3D9: Vertex texture format supported - PF_A1R5G5B5
-13:36:06: D3D9: Vertex texture format supported - PF_A8R8G8B8
-13:36:06: D3D9: Vertex texture format supported - PF_B8G8R8A8
-13:36:06: D3D9: Vertex texture format supported - PF_A2R10G10B10
-13:36:06: D3D9: Vertex texture format supported - PF_A2B10G10R10
-13:36:06: D3D9: Vertex texture format supported - PF_DXT1
-13:36:06: D3D9: Vertex texture format supported - PF_DXT2
-13:36:06: D3D9: Vertex texture format supported - PF_DXT3
-13:36:06: D3D9: Vertex texture format supported - PF_DXT4
-13:36:06: D3D9: Vertex texture format supported - PF_DXT5
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
-13:36:06: D3D9: Vertex texture format supported - PF_X8R8G8B8
-13:36:06: D3D9: Vertex texture format supported - PF_X8B8G8R8
-13:36:06: D3D9: Vertex texture format supported - PF_R8G8B8A8
-13:36:06: D3D9: Vertex texture format supported - PF_DEPTH
-13:36:06: D3D9: Vertex texture format supported - PF_SHORT_RGBA
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT16_R
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT32_R
-13:36:06: D3D9: Vertex texture format supported - PF_SHORT_GR
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT16_GR
-13:36:06: D3D9: Vertex texture format supported - PF_FLOAT32_GR
-13:36:06: D3D9: Vertex texture format supported - PF_SHORT_RGB
-13:36:06: D3D9: Vertex texture format supported - PF_PVRTC_RGB2
-13:36:06: D3D9: Vertex texture format supported - PF_PVRTC_RGBA2
-13:36:06: D3D9: Vertex texture format supported - PF_PVRTC_RGB4
-13:36:06: D3D9: Vertex texture format supported - PF_PVRTC_RGBA4
-13:36:06: RenderSystem capabilities
-13:36:06: -------------------------
-13:36:06: RenderSystem Name: Direct3D9 Rendering Subsystem
-13:36:06: GPU Vendor: ati
-13:36:06: Device Name: Monitor-1-AMD Radeon HD 8400
-13:36:06: Driver Version: 8.17.10.1247
-13:36:06:  * Fixed function pipeline: yes
-13:36:06:  * Hardware generation of mipmaps: yes
-13:36:06:  * Texture blending: yes
-13:36:06:  * Anisotropic texture filtering: yes
-13:36:06:  * Dot product texture operation: yes
-13:36:06:  * Cube mapping: yes
-13:36:06:  * Hardware stencil buffer: yes
-13:36:06:    - Stencil depth: 8
-13:36:06:    - Two sided stencil support: yes
-13:36:06:    - Wrap stencil values: yes
-13:36:06:  * Hardware vertex / index buffers: yes
-13:36:06:  * Vertex programs: yes
-13:36:06:  * Number of floating-point constants for vertex programs: 256
-13:36:06:  * Number of integer constants for vertex programs: 16
-13:36:06:  * Number of boolean constants for vertex programs: 16
-13:36:06:  * Fragment programs: yes
-13:36:06:  * Number of floating-point constants for fragment programs: 224
-13:36:06:  * Number of integer constants for fragment programs: 16
-13:36:06:  * Number of boolean constants for fragment programs: 16
-13:36:06:  * Geometry programs: no
-13:36:06:  * Number of floating-point constants for geometry programs: 0
-13:36:06:  * Number of integer constants for geometry programs: 0
-13:36:06:  * Number of boolean constants for geometry programs: 0
-13:36:06:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
-13:36:06:  * Texture Compression: yes
-13:36:06:    - DXT: yes
-13:36:06:    - VTC: no
-13:36:06:    - PVRTC: no
-13:36:06:  * Scissor Rectangle: yes
-13:36:06:  * Hardware Occlusion Query: yes
-13:36:06:  * User clip planes: yes
-13:36:06:  * VET_UBYTE4 vertex element type: yes
-13:36:06:  * Infinite far plane projection: yes
-13:36:06:  * Hardware render-to-texture: yes
-13:36:06:  * Floating point textures: yes
-13:36:06:  * Non-power-of-two textures: yes
-13:36:06:  * Volume textures: yes
-13:36:06:  * Multiple Render Targets: 4
-13:36:06:    - With different bit depths: yes
-13:36:06:  * Point Sprites: yes
-13:36:06:  * Extended point parameters: yes
-13:36:06:  * Max Point Size: 10
-13:36:06:  * Vertex texture fetch: yes
-13:36:06:  * Number of world matrices: 0
-13:36:06:  * Number of texture units: 8
-13:36:06:  * Stencil buffer depth: 8
-13:36:06:  * Number of vertex blend matrices: 0
-13:36:06:    - Max vertex textures: 4
-13:36:06:    - Vertex textures shared: no
-13:36:06:  * Render to Vertex Buffer : no
-13:36:06:  * DirectX per stage constants: yes
-13:36:06: ***************************************
-13:36:06: *** D3D9 : Subsystem Initialised OK ***
-13:36:06: ***************************************
-13:36:06: DefaultWorkQueue('Root') initialising on thread main.
-13:36:06: Particle Renderer Type 'billboard' registered
-13:36:06: SceneManagerFactory for type 'OctreeSceneManager' registered.
-13:36:06: SceneManagerFactory for type 'TerrainSceneManager' registered.
-13:36:06: Creating resource group Bootstrap
-13:36:06: Added resource location '../../Media/packs/OgreCore.zip' of type 'Zip' to resource group 'Bootstrap'
-13:36:06: Added resource location '../../Media' of type 'FileSystem' to resource group 'General'
-13:36:06: Added resource location '../../Media/fonts' of type 'FileSystem' to resource group 'General'
-13:36:06: Added resource location '../../Media/materials/programs' of type 'FileSystem' to resource group 'General'
-13:36:06: Added resource location '../../Media/materials/scripts' of type 'FileSystem' to resource group 'General'
-13:36:06: Added resource location '../../Media/materials/textures' of type 'FileSystem' to resource group 'General'
-13:36:06: Added resource location '../../Media/models' of type 'FileSystem' to resource group 'General'
-13:36:06: Added resource location '../../Media/packs/cubemap.zip' of type 'Zip' to resource group 'General'
-13:36:06: Added resource location '../../Media/packs/skybox.zip' of type 'Zip' to resource group 'General'
-13:36:06: Parsing scripts for resource group Autodetect
-13:36:06: Finished parsing scripts for resource group Autodetect
-13:36:06: Parsing scripts for resource group Bootstrap
-13:36:06: Parsing script OgreCore.material
-13:36:06: Parsing script OgreProfiler.material
-13:36:06: Parsing script Ogre.fontdef
-13:36:06: Parsing script OgreDebugPanel.overlay
-13:36:06: Texture: New_Ogre_Border_Center.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
-13:36:06: Texture: New_Ogre_Border.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
-13:36:06: Texture: New_Ogre_Border_Break.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
-13:36:06: Texture: ogretext.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
-13:36:06: Parsing script OgreLoadingPanel.overlay
-13:36:06: Finished parsing scripts for resource group Bootstrap
-13:36:06: Parsing scripts for resource group General
-13:36:06: Parsing script Example.material
-13:36:06: Compiler error: reference to a non existing object in Example.material(211)
-13:36:06: Compiler error: reference to a non existing object in Example.material(697)
-13:36:06: Compiler error: reference to a non existing object in Example.material(709)
-13:36:06: Compiler error: reference to a non existing object in Example.material(844)
-13:36:06: Compiler error: reference to a non existing object in Example.material(879)
-13:36:06: Compiler error: reference to a non existing object in Example.material(987)
-13:36:06: Compiler error: reference to a non existing object in Example.material(992)
-13:36:06: Parsing script GameInterface.material
-13:36:06: Parsing script Ground.material
-13:36:06: Parsing script Heart.material
-13:36:06: Parsing script red.material
-13:36:06: Parsing script Sky.material
-13:36:06: Parsing script GameInterface.overlay
-13:36:06: Texture: RedGradient.png: Loading 1 faces(PF_A8R8G8B8,944x704x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,944x704x1.
-13:36:06: Texture: BlueGradient.png: Loading 1 faces(PF_A8R8G8B8,944x704x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,944x704x1.
-13:36:06: Finished parsing scripts for resource group General
-13:36:06: Parsing scripts for resource group Internal
-13:36:06: Finished parsing scripts for resource group Internal
-13:36:06: Mesh: Loading Heart.mesh.
-13:36:06: Can't assign material 01-Default to SubEntity of Ogre/MO1 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 01-Default to SubEntity of Ogre/MO2 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 01-Default to SubEntity of Ogre/MO3 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Texture: clouds.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
-13:36:06: Texture: Dirt.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
-13:36:06: Mesh: Loading Sphere.mesh.
-13:36:06: Can't assign material Sphere to SubEntity of Ogre/MO10 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 10-Default to SubEntity of Ogre/MO10 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Mesh: Loading Main.mesh.
-13:36:06: Can't assign material Hull to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material Burner to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material Glass to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material Black to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Mesh: Loading PowerCells.mesh.
-13:36:06: Can't assign material Plugs to SubEntity of Ogre/MO12 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material Cell to SubEntity of Ogre/MO12 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material Sphere to SubEntity of Ogre/MO13 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 10-Default to SubEntity of Ogre/MO13 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Mesh: Loading Gem.mesh.
-13:36:06: Can't assign material 10-Default to SubEntity of Ogre/MO14 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 10-Default to SubEntity of Ogre/MO15 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 10-Default to SubEntity of Ogre/MO16 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 10-Default to SubEntity of Ogre/MO17 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Can't assign material 10-Default to SubEntity of Ogre/MO18 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:06: Mesh: Loading Robot.mesh.
-13:36:06: Skeleton: Loading robot.skeleton
-13:36:06: WARNING: Robot.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
-13:36:06: Texture: r2skin.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
-13:36:07: *** Initializing OIS ***
-13:36:07: Texture: spot_shadow_fade.png: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-13:36:07: Font BlueHighwayusing texture size 512x512
-13:36:07: Info: Freetype returned null for character 127 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 128 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 129 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 130 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 131 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 132 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 133 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 134 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 135 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 136 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 137 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 138 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 139 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 140 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 141 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 142 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 143 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 144 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 145 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 146 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 147 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 148 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 149 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 150 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 151 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 152 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 153 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 154 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 155 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 156 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 157 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 158 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 159 in font BlueHighway
-13:36:07: Info: Freetype returned null for character 160 in font BlueHighway
-13:36:07: Texture: BlueHighwayTexture: Loading 1 faces(PF_BYTE_LA,512x512x1) with 0 generated mipmaps from Image. Internal format is PF_BYTE_LA,512x512x1.
-13:36:19: Can't assign material Sphere to SubEntity of Ogre/MO20 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:19: Can't assign material 10-Default to SubEntity of Ogre/MO20 because this Material does not exist. Have you forgotten to define it in a .material script?
-13:36:21: DefaultWorkQueue('Root') shutting down on thread main.
-13:36:21: *-*-* OGRE Shutdown
-13:36:21: Unregistering ResourceManager for type Compositor
-13:36:21: Unregistering ResourceManager for type Font
-13:36:21: Unregistering ResourceManager for type Skeleton
-13:36:21: Unregistering ResourceManager for type Mesh
-13:36:21: Unregistering ResourceManager for type HighLevelGpuProgram
-13:36:21: Uninstalling plugin: Octree & Terrain Scene Manager
-13:36:21: Plugin successfully uninstalled
-13:36:21: Unloading library .\Plugin_OctreeSceneManager
-13:36:21: Uninstalling plugin: GL RenderSystem
-13:36:21: *** Stopping Win32GL Subsystem ***
-13:36:21: Plugin successfully uninstalled
-13:36:21: Unloading library .\RenderSystem_GL
-13:36:21: Uninstalling plugin: D3D9 RenderSystem
-13:36:21: D3D9 : Shutting down cleanly.
-13:36:21: Unregistering ResourceManager for type Texture
-13:36:21: Unregistering ResourceManager for type GpuProgram
-13:36:21: D3D9 : Direct3D9 Rendering Subsystem destroyed.
-13:36:21: Plugin successfully uninstalled
-13:36:21: Unloading library .\RenderSystem_Direct3D9
-13:36:21: Unregistering ResourceManager for type Material
+17:54:39: Creating resource group General
+17:54:39: Creating resource group Internal
+17:54:39: Creating resource group Autodetect
+17:54:39: SceneManagerFactory for type 'DefaultSceneManager' registered.
+17:54:39: Registering ResourceManager for type Material
+17:54:39: Registering ResourceManager for type Mesh
+17:54:39: Registering ResourceManager for type Skeleton
+17:54:39: MovableObjectFactory for type 'ParticleSystem' registered.
+17:54:39: OverlayElementFactory for type Panel registered.
+17:54:39: OverlayElementFactory for type BorderPanel registered.
+17:54:39: OverlayElementFactory for type TextArea registered.
+17:54:39: Registering ResourceManager for type Font
+17:54:39: ArchiveFactory for archive type FileSystem registered.
+17:54:39: ArchiveFactory for archive type Zip registered.
+17:54:39: DDS codec registering
+17:54:39: FreeImage version: 3.13.1
+17:54:39: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+17:54:39: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
+17:54:39: PVRTC codec registering
+17:54:39: Registering ResourceManager for type HighLevelGpuProgram
+17:54:39: Registering ResourceManager for type Compositor
+17:54:39: MovableObjectFactory for type 'Entity' registered.
+17:54:39: MovableObjectFactory for type 'Light' registered.
+17:54:39: MovableObjectFactory for type 'BillboardSet' registered.
+17:54:39: MovableObjectFactory for type 'ManualObject' registered.
+17:54:39: MovableObjectFactory for type 'BillboardChain' registered.
+17:54:39: MovableObjectFactory for type 'RibbonTrail' registered.
+17:54:39: Loading library .\RenderSystem_Direct3D9
+17:54:39: Installing plugin: D3D9 RenderSystem
+17:54:39: D3D9 : Direct3D9 Rendering Subsystem created.
+17:54:39: D3D9: Driver Detection Starts
+17:54:39: D3D9: Driver Detection Ends
+17:54:39: Plugin successfully installed
+17:54:39: Loading library .\RenderSystem_GL
+17:54:39: Installing plugin: GL RenderSystem
+17:54:39: OpenGL Rendering Subsystem created.
+17:54:40: Plugin successfully installed
+17:54:40: Loading library .\Plugin_OctreeSceneManager
+17:54:40: Installing plugin: Octree & Terrain Scene Manager
+17:54:40: Plugin successfully installed
+17:54:40: *-*-* OGRE Initialising
+17:54:40: *-*-* Version 1.7.1 (Cthugha)
+17:54:40: D3D9 : RenderSystem Option: Allow NVPerfHUD = No
+17:54:40: D3D9 : RenderSystem Option: FSAA = 0
+17:54:40: D3D9 : RenderSystem Option: Floating-point mode = Fastest
+17:54:40: D3D9 : RenderSystem Option: Full Screen = No
+17:54:40: D3D9 : RenderSystem Option: Rendering Device = Monitor-1-AMD Radeon HD 8400
+17:54:40: D3D9 : RenderSystem Option: Resource Creation Policy = Create on all devices
+17:54:40: D3D9 : RenderSystem Option: VSync = No
+17:54:40: D3D9 : RenderSystem Option: VSync Interval = 1
+17:54:40: D3D9 : RenderSystem Option: Video Mode = 800 x 600 @ 32-bit colour
+17:54:40: D3D9 : RenderSystem Option: sRGB Gamma Conversion = No
+17:54:40: CPU Identifier & Features
+17:54:40: -------------------------
+17:54:40:  *   CPU ID: AuthenticAMD: AMD A6-5200 APU with Radeon(TM) HD Graphics
+17:54:40:  *      SSE: yes
+17:54:40:  *     SSE2: yes
+17:54:40:  *     SSE3: yes
+17:54:40:  *      MMX: yes
+17:54:40:  *   MMXEXT: yes
+17:54:40:  *    3DNOW: no
+17:54:40:  * 3DNOWEXT: no
+17:54:40:  *     CMOV: yes
+17:54:40:  *      TSC: yes
+17:54:40:  *      FPU: yes
+17:54:40:  *      PRO: yes
+17:54:40:  *       HT: no
+17:54:40: -------------------------
+17:54:40: D3D9 : Subsystem Initialising
+17:54:40: Registering ResourceManager for type Texture
+17:54:40: Registering ResourceManager for type GpuProgram
+17:54:41: D3D9RenderSystem::_createRenderWindow "TutorialApplication Render Window", 800x600 windowed  miscParams: FSAA=0 FSAAHint= colourDepth=32 gamma=false monitorIndex=0 useNVPerfHUD=false vsync=false vsyncInterval=1 
+17:54:41: D3D9 : Created D3D9 Rendering Window 'TutorialApplication Render Window' : 800x600, 32bpp
+17:54:41: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
+17:54:41: D3D9: Vertex texture format supported - PF_L8
+17:54:41: D3D9: Vertex texture format supported - PF_L16
+17:54:41: D3D9: Vertex texture format supported - PF_A8
+17:54:41: D3D9: Vertex texture format supported - PF_A4L4
+17:54:41: D3D9: Vertex texture format supported - PF_BYTE_LA
+17:54:41: D3D9: Vertex texture format supported - PF_R5G6B5
+17:54:41: D3D9: Vertex texture format supported - PF_B5G6R5
+17:54:41: D3D9: Vertex texture format supported - PF_A4R4G4B4
+17:54:41: D3D9: Vertex texture format supported - PF_A1R5G5B5
+17:54:41: D3D9: Vertex texture format supported - PF_A8R8G8B8
+17:54:41: D3D9: Vertex texture format supported - PF_B8G8R8A8
+17:54:41: D3D9: Vertex texture format supported - PF_A2R10G10B10
+17:54:41: D3D9: Vertex texture format supported - PF_A2B10G10R10
+17:54:41: D3D9: Vertex texture format supported - PF_DXT1
+17:54:41: D3D9: Vertex texture format supported - PF_DXT2
+17:54:41: D3D9: Vertex texture format supported - PF_DXT3
+17:54:41: D3D9: Vertex texture format supported - PF_DXT4
+17:54:41: D3D9: Vertex texture format supported - PF_DXT5
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+17:54:41: D3D9: Vertex texture format supported - PF_X8R8G8B8
+17:54:41: D3D9: Vertex texture format supported - PF_X8B8G8R8
+17:54:41: D3D9: Vertex texture format supported - PF_R8G8B8A8
+17:54:41: D3D9: Vertex texture format supported - PF_DEPTH
+17:54:41: D3D9: Vertex texture format supported - PF_SHORT_RGBA
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT16_R
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT32_R
+17:54:41: D3D9: Vertex texture format supported - PF_SHORT_GR
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT16_GR
+17:54:41: D3D9: Vertex texture format supported - PF_FLOAT32_GR
+17:54:41: D3D9: Vertex texture format supported - PF_SHORT_RGB
+17:54:41: D3D9: Vertex texture format supported - PF_PVRTC_RGB2
+17:54:41: D3D9: Vertex texture format supported - PF_PVRTC_RGBA2
+17:54:41: D3D9: Vertex texture format supported - PF_PVRTC_RGB4
+17:54:41: D3D9: Vertex texture format supported - PF_PVRTC_RGBA4
+17:54:41: RenderSystem capabilities
+17:54:41: -------------------------
+17:54:41: RenderSystem Name: Direct3D9 Rendering Subsystem
+17:54:41: GPU Vendor: ati
+17:54:41: Device Name: Monitor-1-AMD Radeon HD 8400
+17:54:41: Driver Version: 8.17.10.1247
+17:54:41:  * Fixed function pipeline: yes
+17:54:41:  * Hardware generation of mipmaps: yes
+17:54:41:  * Texture blending: yes
+17:54:41:  * Anisotropic texture filtering: yes
+17:54:41:  * Dot product texture operation: yes
+17:54:41:  * Cube mapping: yes
+17:54:41:  * Hardware stencil buffer: yes
+17:54:41:    - Stencil depth: 8
+17:54:41:    - Two sided stencil support: yes
+17:54:41:    - Wrap stencil values: yes
+17:54:41:  * Hardware vertex / index buffers: yes
+17:54:41:  * Vertex programs: yes
+17:54:41:  * Number of floating-point constants for vertex programs: 256
+17:54:41:  * Number of integer constants for vertex programs: 16
+17:54:41:  * Number of boolean constants for vertex programs: 16
+17:54:41:  * Fragment programs: yes
+17:54:41:  * Number of floating-point constants for fragment programs: 224
+17:54:41:  * Number of integer constants for fragment programs: 16
+17:54:41:  * Number of boolean constants for fragment programs: 16
+17:54:41:  * Geometry programs: no
+17:54:41:  * Number of floating-point constants for geometry programs: 0
+17:54:41:  * Number of integer constants for geometry programs: 0
+17:54:41:  * Number of boolean constants for geometry programs: 0
+17:54:41:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
+17:54:41:  * Texture Compression: yes
+17:54:41:    - DXT: yes
+17:54:41:    - VTC: no
+17:54:41:    - PVRTC: no
+17:54:41:  * Scissor Rectangle: yes
+17:54:41:  * Hardware Occlusion Query: yes
+17:54:41:  * User clip planes: yes
+17:54:41:  * VET_UBYTE4 vertex element type: yes
+17:54:41:  * Infinite far plane projection: yes
+17:54:41:  * Hardware render-to-texture: yes
+17:54:41:  * Floating point textures: yes
+17:54:41:  * Non-power-of-two textures: yes
+17:54:41:  * Volume textures: yes
+17:54:41:  * Multiple Render Targets: 4
+17:54:41:    - With different bit depths: yes
+17:54:41:  * Point Sprites: yes
+17:54:41:  * Extended point parameters: yes
+17:54:41:  * Max Point Size: 10
+17:54:41:  * Vertex texture fetch: yes
+17:54:41:  * Number of world matrices: 0
+17:54:41:  * Number of texture units: 8
+17:54:41:  * Stencil buffer depth: 8
+17:54:41:  * Number of vertex blend matrices: 0
+17:54:41:    - Max vertex textures: 4
+17:54:41:    - Vertex textures shared: no
+17:54:41:  * Render to Vertex Buffer : no
+17:54:41:  * DirectX per stage constants: yes
+17:54:41: ***************************************
+17:54:41: *** D3D9 : Subsystem Initialised OK ***
+17:54:41: ***************************************
+17:54:41: DefaultWorkQueue('Root') initialising on thread main.
+17:54:41: Particle Renderer Type 'billboard' registered
+17:54:41: SceneManagerFactory for type 'OctreeSceneManager' registered.
+17:54:41: SceneManagerFactory for type 'TerrainSceneManager' registered.
+17:54:41: Creating resource group Bootstrap
+17:54:41: Added resource location '../../Media/packs/OgreCore.zip' of type 'Zip' to resource group 'Bootstrap'
+17:54:41: Added resource location '../../Media' of type 'FileSystem' to resource group 'General'
+17:54:41: Added resource location '../../Media/fonts' of type 'FileSystem' to resource group 'General'
+17:54:41: Added resource location '../../Media/materials/programs' of type 'FileSystem' to resource group 'General'
+17:54:41: Added resource location '../../Media/materials/scripts' of type 'FileSystem' to resource group 'General'
+17:54:41: Added resource location '../../Media/materials/textures' of type 'FileSystem' to resource group 'General'
+17:54:41: Added resource location '../../Media/models' of type 'FileSystem' to resource group 'General'
+17:54:41: Added resource location '../../Media/packs/cubemap.zip' of type 'Zip' to resource group 'General'
+17:54:41: Added resource location '../../Media/packs/skybox.zip' of type 'Zip' to resource group 'General'
+17:54:41: Parsing scripts for resource group Autodetect
+17:54:41: Finished parsing scripts for resource group Autodetect
+17:54:41: Parsing scripts for resource group Bootstrap
+17:54:41: Parsing script OgreCore.material
+17:54:41: Parsing script OgreProfiler.material
+17:54:41: Parsing script Ogre.fontdef
+17:54:41: Parsing script OgreDebugPanel.overlay
+17:54:41: Texture: New_Ogre_Border_Center.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+17:54:41: Texture: New_Ogre_Border.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+17:54:41: Texture: New_Ogre_Border_Break.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+17:54:41: Texture: ogretext.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+17:54:41: Parsing script OgreLoadingPanel.overlay
+17:54:41: Finished parsing scripts for resource group Bootstrap
+17:54:41: Parsing scripts for resource group General
+17:54:41: Parsing script Example.material
+17:54:41: Compiler error: reference to a non existing object in Example.material(211)
+17:54:41: Compiler error: reference to a non existing object in Example.material(697)
+17:54:41: Compiler error: reference to a non existing object in Example.material(709)
+17:54:41: Compiler error: reference to a non existing object in Example.material(844)
+17:54:41: Compiler error: reference to a non existing object in Example.material(879)
+17:54:41: Compiler error: reference to a non existing object in Example.material(987)
+17:54:41: Compiler error: reference to a non existing object in Example.material(992)
+17:54:41: Parsing script GameInterface.material
+17:54:41: Parsing script Ground.material
+17:54:41: Parsing script Heart.material
+17:54:41: Parsing script red.material
+17:54:41: Parsing script Sky.material
+17:54:41: Parsing script GameInterface.overlay
+17:54:41: Texture: RedGradient.png: Loading 1 faces(PF_A8R8G8B8,944x704x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,944x704x1.
+17:54:41: Texture: BlueGradient.png: Loading 1 faces(PF_A8R8G8B8,944x704x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,944x704x1.
+17:54:41: Finished parsing scripts for resource group General
+17:54:41: Parsing scripts for resource group Internal
+17:54:41: Finished parsing scripts for resource group Internal
+17:54:41: Mesh: Loading Heart.mesh.
+17:54:41: Can't assign material 01-Default to SubEntity of Ogre/MO1 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 01-Default to SubEntity of Ogre/MO2 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 01-Default to SubEntity of Ogre/MO3 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Texture: clouds.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+17:54:41: Texture: Dirt.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+17:54:41: Mesh: Loading Sphere.mesh.
+17:54:41: Can't assign material Sphere to SubEntity of Ogre/MO10 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 10-Default to SubEntity of Ogre/MO10 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Mesh: Loading Main.mesh.
+17:54:41: Can't assign material Hull to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material Burner to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material Glass to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material Black to SubEntity of Ogre/MO11 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Mesh: Loading PowerCells.mesh.
+17:54:41: Can't assign material Plugs to SubEntity of Ogre/MO12 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material Cell to SubEntity of Ogre/MO12 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material Sphere to SubEntity of Ogre/MO13 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 10-Default to SubEntity of Ogre/MO13 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Mesh: Loading Gem.mesh.
+17:54:41: Can't assign material 10-Default to SubEntity of Ogre/MO14 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 10-Default to SubEntity of Ogre/MO15 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 10-Default to SubEntity of Ogre/MO16 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 10-Default to SubEntity of Ogre/MO17 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Can't assign material 10-Default to SubEntity of Ogre/MO18 because this Material does not exist. Have you forgotten to define it in a .material script?
+17:54:41: Mesh: Loading Robot.mesh.
+17:54:41: Skeleton: Loading robot.skeleton
+17:54:41: WARNING: Robot.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+17:54:41: Texture: r2skin.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+17:54:41: *** Initializing OIS ***
+17:54:41: Texture: spot_shadow_fade.png: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+17:54:41: Font BlueHighwayusing texture size 512x512
+17:54:41: Info: Freetype returned null for character 127 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 128 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 129 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 130 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 131 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 132 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 133 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 134 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 135 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 136 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 137 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 138 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 139 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 140 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 141 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 142 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 143 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 144 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 145 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 146 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 147 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 148 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 149 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 150 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 151 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 152 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 153 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 154 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 155 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 156 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 157 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 158 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 159 in font BlueHighway
+17:54:41: Info: Freetype returned null for character 160 in font BlueHighway
+17:54:41: Texture: BlueHighwayTexture: Loading 1 faces(PF_BYTE_LA,512x512x1) with 0 generated mipmaps from Image. Internal format is PF_BYTE_LA,512x512x1.
+17:55:41: DefaultWorkQueue('Root') shutting down on thread main.
+17:55:41: *-*-* OGRE Shutdown
+17:55:41: Unregistering ResourceManager for type Compositor
+17:55:41: Unregistering ResourceManager for type Font
+17:55:41: Unregistering ResourceManager for type Skeleton
+17:55:41: Unregistering ResourceManager for type Mesh
+17:55:41: Unregistering ResourceManager for type HighLevelGpuProgram
+17:55:41: Uninstalling plugin: Octree & Terrain Scene Manager
+17:55:41: Plugin successfully uninstalled
+17:55:41: Unloading library .\Plugin_OctreeSceneManager
+17:55:41: Uninstalling plugin: GL RenderSystem
+17:55:41: *** Stopping Win32GL Subsystem ***
+17:55:41: Plugin successfully uninstalled
+17:55:41: Unloading library .\RenderSystem_GL
+17:55:41: Uninstalling plugin: D3D9 RenderSystem
+17:55:41: D3D9 : Shutting down cleanly.
+17:55:41: Unregistering ResourceManager for type Texture
+17:55:41: Unregistering ResourceManager for type GpuProgram
+17:55:41: D3D9 : Direct3D9 Rendering Subsystem destroyed.
+17:55:41: Plugin successfully uninstalled
+17:55:41: Unloading library .\RenderSystem_Direct3D9
+17:55:41: Unregistering ResourceManager for type Material

@@ -46,7 +46,10 @@ namespace RaceGame
             #endregion
 
             Physics.AddBoundary(ground.Plane);
-            Physics.AddBoundary(wall.Plane);
+            Physics.AddBoundary(wall.Plane1);
+            Physics.AddBoundary(wall.Plane2);
+            Physics.AddBoundary(wall.Plane3);
+            Physics.AddBoundary(wall.Plane4);
         }
 
         #region As in Demo 11
