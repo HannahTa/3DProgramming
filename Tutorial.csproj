@@ -58,9 +58,9 @@
     <Compile Include="AbstractClasses\Collectables\AllGems\SmallGem.cs" />
     <Compile Include="AbstractClasses\Collectables\AllPowerUps\DoubleScore.cs" />
     <Compile Include="AbstractClasses\Collectables\AllPowerUps\Health.cs" />
+    <Compile Include="AbstractClasses\Collectables\AllPowerUps\Life.cs" />
     <Compile Include="AbstractClasses\Collectables\Collectable.cs" />
     <Compile Include="AbstractClasses\Collectables\Gem.cs" />
-    <Compile Include="AbstractClasses\Collectables\Heart.cs" />
     <Compile Include="AbstractClasses\Collectables\PowerUp.cs" />
     <Compile Include="AbstractClasses\EnemiesClasses\Enemies.cs" />
     <Compile Include="AbstractClasses\EnemiesClasses\EnemiesController.cs" />

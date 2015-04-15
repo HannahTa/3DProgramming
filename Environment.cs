@@ -81,9 +81,9 @@ namespace RaceGame
         private void SetFog()
         {
             ColourValue fadeColour = new ColourValue(0.9f, 0.9f, 1f);
-            mSceneMgr.SetFog(FogMode.FOG_LINEAR, fadeColour, 0.1f, 100, 1000);
+            //mSceneMgr.SetFog(FogMode.FOG_LINEAR, fadeColour, 0.1f, 100, 1000);
 
-            //mSceneMgr.SetFog(FogMode.FOG_EXP, fadeColour, 0.001f);
+            mSceneMgr.SetFog(FogMode.FOG_EXP, fadeColour, 0.001f);
             //mSceneMgr.SetFog(FogMode.FOG_EXP2, fadeColour, 0.0015f);
             
             mWindow.GetViewport(0).BackgroundColour = fadeColour;

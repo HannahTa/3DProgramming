@@ -18,30 +18,28 @@ namespace RaceGame
         {
             set { stat = value; }
         }
-
+        
+        protected int increase;
+        
         protected PowerUp(SceneManager mSceneMgr)
         {
             this.mSceneMgr = mSceneMgr;
-            LoadModel();
+            
+            //LoadModel();
         }
 
-        protected int increase;
+        
         virtual protected void LoadModel() 
         {
-            removeMe = false;
-            physObj = new PhysObj(7, "Gem", 0.3f, 0.5f);
-            //physObj.Position = gameNode.Position;
-            physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            physObj.SceneNode = gameNode;
-
-            Physics.AddPhysObj(physObj);
+            
         }
 
         public override void Update(FrameEvent evt)
         {
             // Collision detection with the player goes here
             // (ignore until week 8) ...
-            removeMe = IsCollidingWith("Player");
+            remove = IsCollidingWith("Player");
+            base.Update(evt);
         }
 
         public bool IsCollidingWith(string objName)

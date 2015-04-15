@@ -12,6 +12,8 @@ namespace RaceGame
         GameInterface gameHMD;
         //TimeIndex time;
 
+        int level = 1;
+
         static public bool shoot;
 
         Environment environment;
@@ -19,9 +21,6 @@ namespace RaceGame
         //Enemies enemies;
 
         Score stat;
-        //Gem midGem;
-        //PowerUp health;
-        //DoubleScore doubleScore;
 
         Gun slowGun;
 
@@ -96,9 +95,6 @@ namespace RaceGame
 
             //Gems.Add(midGem);
             //PowerUps.Add(health);
-            //AddPowerUp();
-            
-            
 
             // Player
             player = new Player(mSceneMgr);
@@ -108,9 +104,15 @@ namespace RaceGame
                 AddGem(playerStats.Score);
             }
 
+            for (int i = 0; i < 5; i++)
+            {
+                AddPowerUp(playerStats.Health, playerStats.Shield, playerStats.Lives);
+            }
+
             //AddGem(playerStats.Score);
             //AddGem(playerStats.Score);
             AddCollGun();
+            
 
             // Enemies
             //enemies = new Enemies(mSceneMgr);
@@ -146,6 +148,7 @@ namespace RaceGame
             {
                 //this.DestroyScene();
                 //this.Shutdown();
+                
             }
 
             if (shoot)
@@ -220,21 +223,22 @@ namespace RaceGame
                 cg.Dispose();
             }
 
-            //foreach (PowerUp pu in PowerUps)
-            //{
-            //    pu.Update(evt);
-            //    if (pu.RemoveMe)
-            //    {
-            //        powerUpsToRemove.Add(pu);
-            //    }
-            //}
+            foreach (PowerUp pu in PowerUps)
+            {
+                pu.Update(evt);
+                if (pu.RemoveMe)
+                {
+                    powerUpsToRemove.Add(pu);
+                }
+                //System.Console.WriteLine(player.Stats.Lives.Value);
+            }
 
-            //foreach (PowerUp pu in powerUpsToRemove)
-            //{
-            //    PowerUps.Remove(pu);
-            //    pu.Dispose();
-            //}
-            //powerUpsToRemove.Clear();
+            foreach (PowerUp pu in powerUpsToRemove)
+            {
+                PowerUps.Remove(pu);
+                pu.Dispose();
+            }
+            powerUpsToRemove.Clear();
 
             gameHMD.Update(evt);
             
@@ -299,10 +303,10 @@ namespace RaceGame
                 p.Dispose();
             }
 
-            //foreach (PowerUp pu in PowerUps)
-            //{
-            //    pu.Dispose();
-            //}
+            foreach (PowerUp pu in PowerUps)
+            {
+                pu.Dispose();
+            }
 
             //collGun.Dispose();
             //slowGun.Dispose();
@@ -337,19 +341,19 @@ namespace RaceGame
             if (count > 10)
             {
                 Gem largeGem = new LargeGem(mSceneMgr, score);
-                largeGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-200, 200), 50, Mogre.Math.RangeRandom(-200, 200)));
+                largeGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 50, Mogre.Math.RangeRandom(-400, 400)));
                 Gems.Add(largeGem);
             }
             else if (count % 2 != 0)
             {
                 Gem midGem = new MidGem(mSceneMgr, score);
-                midGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-200, 200), 50, Mogre.Math.RangeRandom(-200, 200)));
+                midGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 50, Mogre.Math.RangeRandom(-400, 400)));
                 Gems.Add(midGem);
             }
             else
             {
                 Gem smallGem = new SmallGem(mSceneMgr, score);
-                smallGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-200, 200), 50, Mogre.Math.RangeRandom(-200, 200)));
+                smallGem.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 50, Mogre.Math.RangeRandom(-400, 400)));
                 Gems.Add(smallGem);
             }
         }
@@ -361,12 +365,28 @@ namespace RaceGame
             collGuns.Add(CollGun);
         }
 
-        private void AddPowerUp()
+        private void AddPowerUp(Stat health, Stat shield, Stat life)
         {
-            PowerUp powerUp = new Health(mSceneMgr, stat);
-            //powerUp.SetPosition(new Vector3(Mogre.Math.RangeRandom(0, 100), 100, Mogre.Math.RangeRandom(0, 100)));
-            powerUp.SetPosition(new Vector3(100, 50, 10));
-            PowerUps.Add(powerUp);
+            int count = (int)Mogre.Math.RangeRandom(0, 13);
+
+            if (count > 12)
+            {
+                PowerUp live = new Life(mSceneMgr, life);
+                live.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 50, Mogre.Math.RangeRandom(-400, 400)));
+                PowerUps.Add(live);
+            }
+            else if (count % 2 != 0)
+            {
+                PowerUp heart = new Health(mSceneMgr, health);
+                heart.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 50, Mogre.Math.RangeRandom(-400, 400)));
+                PowerUps.Add(heart);
+            }
+            else
+            {
+                PowerUp doubleScore = new DoubleScore(mSceneMgr, shield);
+                doubleScore.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 50, Mogre.Math.RangeRandom(-400, 400)));
+                PowerUps.Add(doubleScore);
+            }
         }
 
         /// <summary>

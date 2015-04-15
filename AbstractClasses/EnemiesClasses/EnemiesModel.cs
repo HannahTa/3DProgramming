@@ -38,7 +38,7 @@ namespace RaceGame
             mSceneMgr.RootSceneNode.AddChild(enemyNode1.GameNode);
 
             // Physics
-            float radius = 9;
+            float radius = 8;
 
             physObj = new PhysObj(radius, "Robot", 0.1f, 0.7f, 0.3f);
             physObj.SceneNode = enemyNode1.GameNode;

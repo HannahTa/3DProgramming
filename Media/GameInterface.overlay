@@ -8,6 +8,13 @@ GameInterface
 		left         0
 		width        1024
 		height       60
+		
+		container Panel(GameOver/Panel)
+		{
+			width		  1
+			height	  1
+			material     Red
+		}
 
 		element Panel(HealthBar)
 		{
