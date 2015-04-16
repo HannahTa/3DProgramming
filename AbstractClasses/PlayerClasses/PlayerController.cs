@@ -16,12 +16,13 @@ namespace RaceGame
 
         public override void Update(FrameEvent evt)
         {
+            //right = true;
             MovementsControl(evt);
             MouseControls();
             ShootingControls();
-            //System.Console.WriteLine("in update");
-            
             //base.Update(evt);
+
+            //right = false;
         }
 
         private void MovementsControl(FrameEvent evt)

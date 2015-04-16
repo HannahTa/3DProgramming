@@ -44,6 +44,8 @@ namespace RaceGame
 
         SceneNode cameraNode;
 
+        Enemies enemies;
+
         static InputsManager inputsManager = InputsManager.Instance;
 
         Physics physics;
@@ -88,9 +90,10 @@ namespace RaceGame
 
             robots = new List<Enemies>();
             robotsToRemove = new List<Enemies>();
-
             // Player
             player = new Player(mSceneMgr);
+
+            //enemies = new Enemies(mSceneMgr);
 
             for (int i = 0; i < 5; i++)
             {
@@ -103,14 +106,15 @@ namespace RaceGame
             }
 
             //AddCollGun();
-            AddRobot();
             
+            //enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 0, Mogre.Math.RangeRandom(-400, 400)));
+            //robots.Add(enemies);
 
             // Enemies
             //enemies = new Enemies(mSceneMgr);
-            robots = new List<Enemies>();
-            robotsToRemove = new List<Enemies>();
-            //AddRobot();
+            
+            AddRobot();
+            AddRobot();
 
             // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
@@ -213,6 +217,7 @@ namespace RaceGame
             foreach (Enemies e in robots)
             {
                 e.Update(evt);
+                
                 if (e.Model.RemoveMe)
                 {
                     robotsToRemove.Add(e);
@@ -353,8 +358,8 @@ namespace RaceGame
          */
         private void AddRobot()
         {
-            Enemies enemies = new Enemies(mSceneMgr);
-            enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 100, Mogre.Math.RangeRandom(-400, 400)));
+            enemies = new Enemies(mSceneMgr);
+            enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 0, Mogre.Math.RangeRandom(-400, 400)));
             robots.Add(enemies);
             
         }
