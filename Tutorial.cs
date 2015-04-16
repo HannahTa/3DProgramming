@@ -12,10 +12,11 @@ namespace RaceGame
         GameInterface gameHMD;
         //TimeIndex time;
 
-        int level = 1;
+        public int level = 1;
         int gemCount = 0;
 
         static public bool shoot;
+        static public bool reload;
 
         Environment environment;
         Player player;
@@ -101,7 +102,9 @@ namespace RaceGame
                 AddPowerUp(playerStats.Health, playerStats.Shield, playerStats.Lives);
             }
 
-            AddCollGun();
+            //AddCollGun();
+            AddRobot();
+            
 
             // Enemies
             //enemies = new Enemies(mSceneMgr);
@@ -132,16 +135,50 @@ namespace RaceGame
 
             if (gemCount == 5)
             {
-                AddGem(playerStats.Score);
                 gemCount++;
+                level++;
+                gameHMD.leveltxt = "Level 2";
+                for (int i = 0; i < 10; i++)
+                {
+                    AddGem(playerStats.Score);
+                }
+                //AddGem(playerStats.Score);
             }
 
-            if (gameHMD.ClockText == "0:00")
+            if (gemCount == 11)
             {
-                //this.DestroyScene();
-                //this.Shutdown();
-                
+                gemCount++;
+                level++;
+                gameHMD.leveltxt = "Level 3";
+                AddCollGun();
+                for (int i = 0; i < 10; i++)
+                {
+                    AddGem(playerStats.Score);
+                }
+                AddRobot();
             }
+
+            if (gemCount == 22)
+            {
+                gemCount++;
+                level++;
+                gameHMD.leveltxt = "Level 4";
+                AddCollGun();
+                for (int i = 0; i < 15; i++)
+                {
+                    AddGem(playerStats.Score);
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    AddRobot();
+                }
+            }
+
+            //if (gameHMD.ClockText == "0:00")
+            //{
+            //    //this.DestroyScene();
+            //    //this.Shutdown();
+            //}
 
             if (shoot)
             {
@@ -150,6 +187,11 @@ namespace RaceGame
                     player.Shoot();
                     projList.Add(player.PlayerArmoury.ActiveGun.Projectile);
                 }
+            }
+
+            if (reload)
+            {
+                player.PlayerArmoury.ActiveGun.ReloadAmmo();
             }
 
             foreach (Projectile p in projList)
@@ -239,6 +281,7 @@ namespace RaceGame
             mCamera.LookAt(player.Position);
 
             shoot = false;
+            reload = false;
         }
 
         /// <summary>
@@ -311,8 +354,9 @@ namespace RaceGame
         private void AddRobot()
         {
             Enemies enemies = new Enemies(mSceneMgr);
-            enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(0, 100), 100, Mogre.Math.RangeRandom(0, 100)));
+            enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 100, Mogre.Math.RangeRandom(-400, 400)));
             robots.Add(enemies);
+            
         }
 
         /*
@@ -348,7 +392,7 @@ namespace RaceGame
         private void AddCollGun()
         {
             CollectableGun CollGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
-            CollGun.SetPosition(new Vector3(-100, 50, 50));
+            CollGun.SetPosition(new Vector3(0, 0, 0));
             collGuns.Add(CollGun);
         }
 

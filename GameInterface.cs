@@ -12,6 +12,7 @@ namespace RaceGame
         private OverlayElement scoreText;
         private OverlayElement timeText;
         private OverlayElement gameOverText;
+        private OverlayElement levelText;
         private PanelOverlayElement gameOver;
 
         private OverlayElement healthBar;
@@ -30,8 +31,15 @@ namespace RaceGame
         private float sRatio;
         private string score = "Score: ";
         private string timer = "Time Left: ";
+        public string leveltxt = "Level 1";
+
+        public string Leveltxt
+        {
+            set { leveltxt = value; }
+        }
+
         private string gameOverTime = "Time up! Game Over! Press Esc";
-        private float clock = 10000;
+        private float clock = 180000;
 
         public string clockText;
         public string ClockText
@@ -70,6 +78,11 @@ namespace RaceGame
             timeText.Caption = timer;
             timeText.Left = mWindow.Width * 0.5f;
             timeText.Top = mWindow.Height * 0.05f;
+
+            levelText = OverlayManager.Singleton.GetOverlayElement("LevelText");
+            levelText.Caption = leveltxt;
+            levelText.Left = mWindow.Width * 0.3f;
+            levelText.Top = mWindow.Height * 0.025f;
             
             gameOverText = OverlayManager.Singleton.GetOverlayElement("GameOverText");
             gameOverText.Caption = gameOverTime;
@@ -189,6 +202,7 @@ namespace RaceGame
             //}
             //System.Console.WriteLine(clockText);
 
+            levelText.Caption = leveltxt;
         }
 
         protected override void Animate(FrameEvent evt)
@@ -217,6 +231,7 @@ namespace RaceGame
             scoreText.Dispose();
             timeText.Dispose();
             time.Dispose();
+            levelText.Dispose();
             gameOverText.Dispose();
             gameOver.Dispose();
             panel.Dispose();

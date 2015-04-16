@@ -22,6 +22,9 @@ namespace RaceGame
 
         public override void Update(FrameEvent evt)
         {
+            
+            //controller.Right = true;
+            //if (
             //model.Animate();
             controller.Update(evt);
             //model.RemoveMe

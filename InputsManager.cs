@@ -136,7 +136,8 @@ namespace RaceGame
                     }
                 case MOIS.KeyCode.KC_E:
                     {
-                        break;
+                        Tutorial.reload = true;
+                        break; // Reloading
                     }
                 case MOIS.KeyCode.KC_ESCAPE:
                     {
