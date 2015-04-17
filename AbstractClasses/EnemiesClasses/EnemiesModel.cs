@@ -49,7 +49,5 @@ namespace RaceGame
 
             this.gameNode = enemyNode1.GameNode;
         }
-
-        
     }
 }

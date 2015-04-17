@@ -1,5 +1,6 @@
 ﻿using System;
 using Mogre;
+using PhysicsEng;
 
 namespace RaceGame
 {
@@ -70,6 +71,22 @@ namespace RaceGame
         {
             DisposeModel();
             base.Dispose();
+        }
+
+        public bool IsCollidingWith(string objName)
+        {
+            bool isColliding = false;
+            foreach (Contacts c in physObj.CollisionList)
+            {
+                if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
+                {
+                    isColliding = true;
+                    //score.Increase(increase);
+                    Dispose();
+                    break;
+                }
+            }
+            return isColliding;
         }
 
     }

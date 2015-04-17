@@ -15,7 +15,7 @@ namespace RaceGame
         /// </summary>
         public bool RemoveMe
         {
-            //set { remove = value; } // ??
+            set { remove = value; } // ??
             get { return remove; }
         }
 

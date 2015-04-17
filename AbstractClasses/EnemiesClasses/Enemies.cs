@@ -30,7 +30,11 @@ namespace RaceGame
             //model.Animate();
             controller.Update(evt);
             FrameStarted(evt);
-            //model.
+            model.RemoveMe = model.IsCollidingWith("Projectile");
+            if (model.RemoveMe)
+            {
+                model.Dispose();
+            }
             base.Update(evt);
         }
 
@@ -38,6 +42,7 @@ namespace RaceGame
         {
             base.Shoot();
         }
+
 
 
 

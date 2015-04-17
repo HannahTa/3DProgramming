@@ -229,20 +229,13 @@ namespace RaceGame
                 p.Dispose();
             }
             projListToRemove.Clear();
-
-            //mWalkList.AddLast(player.Position);
-            //System.Console.WriteLine(mWalkList.First.Value);
-            //
+            
             if (mWalkList.First.Value != player.Position)
             {
                 mWalkList.RemoveFirst();
                 mWalkList.AddLast(player.Position);
-                System.Console.WriteLine(player.Position);
             }
-            //if (mWalkList.Count == 0)
-            //{
-            //    mWalkList.AddLast(player.Position);
-            //}
+            
             foreach (Enemies e in robots)
             {
                 e.Update(evt);
