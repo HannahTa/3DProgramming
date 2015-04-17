@@ -67,6 +67,7 @@
     <Compile Include="AbstractClasses\EnemiesClasses\EnemiesModel.cs" />
     <Compile Include="AbstractClasses\EnemiesClasses\EnemiesStats.cs" />
     <Compile Include="AbstractClasses\GameElement.cs" />
+    <Compile Include="AbstractClasses\Guns\AllProjectile\EnemyProjectile.cs" />
     <Compile Include="AbstractClasses\Guns\AllProjectile\SlowProjectile.cs" />
     <Compile Include="AbstractClasses\Guns\AllGuns\SlowGun.cs" />
     <Compile Include="AbstractClasses\Guns\Armoury.cs" />

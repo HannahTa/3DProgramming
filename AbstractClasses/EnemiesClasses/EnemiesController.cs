@@ -19,62 +19,62 @@ namespace RaceGame
 
         public override void Update(FrameEvent evt)
         {
-            random = (int)Mogre.Math.RangeRandom(0, 7);
+            //random = (int)Mogre.Math.RangeRandom(0, 7);
             
-            if (random == 0 && count == 0)
-            {
-                right = true;
-            }
-            if (random == 1 && count == 0)
-            {
-                left = true;
-            }
-            if (random == 2 && count == 0)
-            {
-                forward = true;
-            }
-            if (random == 3 && count == 0)
-            {
-                backward = true;
-            }
-            if (random == 4 && count == 0)
-            {
-                right = true;
-                forward = true;
-            }
-            if (random == 5 && count == 0)
-            {
-                left = true;
-                forward = true;
-            }
-            if (random == 6 && count == 0)
-            {
-                right = true;
-                backward = true;
-            }
-            if (random == 7 && count == 0)
-            {
-                left = true;
-                backward = true;
-            }
+            //if (random == 0 && count == 0)
+            //{
+            //    right = true;
+            //}
+            //if (random == 1 && count == 0)
+            //{
+            //    left = true;
+            //}
+            //if (random == 2 && count == 0)
+            //{
+            //    forward = true;
+            //}
+            //if (random == 3 && count == 0)
+            //{
+            //    backward = true;
+            //}
+            //if (random == 4 && count == 0)
+            //{
+            //    right = true;
+            //    forward = true;
+            //}
+            //if (random == 5 && count == 0)
+            //{
+            //    left = true;
+            //    forward = true;
+            //}
+            //if (random == 6 && count == 0)
+            //{
+            //    right = true;
+            //    backward = true;
+            //}
+            //if (random == 7 && count == 0)
+            //{
+            //    left = true;
+            //    backward = true;
+            //}
 
-            count++;
+            //count++;
 
-            System.Console.WriteLine(count);
+            //System.Console.WriteLine(count);
 
             MovementsControl(evt);
             MouseControls();
             ShootingControls();
             //base.Update(evt);
 
-            if (count == 500)
-            {
-                count = 0;
-                right = false;
-                left = false;
-                forward = false;
-                backward = false;
-            }
+            //if (count == 750)
+            //{
+            //    count = 0;
+            //    right = false;
+            //    left = false;
+            //    forward = false;
+            //    backward = false;
+            //}
             
         }
 

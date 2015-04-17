@@ -99,6 +99,7 @@ namespace RaceGame
         public float Speed
         {
             set { speed = value; }
+            get { return speed; }
         }
 
         /// <summary>

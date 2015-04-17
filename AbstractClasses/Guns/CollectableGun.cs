@@ -30,16 +30,19 @@ namespace RaceGame
             this.playerArmoury = playerArmoury;
 
             collGunNode = mSceneMgr.CreateSceneNode();
-            collGunNode.AddChild(gun.GameNode);
-            mSceneMgr.RootSceneNode.AddChild(collGunNode);// <--
+            gameNode = collGunNode;
+
+            
+            gameNode.AddChild(gun.GameNode);
+            mSceneMgr.RootSceneNode.AddChild(gameNode);// <--
 
             physObj = new PhysObj(8, "Gun", 0.1f, 0.5f);
             physObj.AddForceToList(new WeightForce(physObj.InvMass));
-            physObj.SceneNode = collGunNode;
+            physObj.SceneNode = gameNode;
 
             Physics.AddPhysObj(physObj);
 
-            this.gameNode = collGunNode;
+            //this.gameNode = gameNode;
             
             //this.gameNode = collGunNode;       // Initialize the gameNode
         }
@@ -54,10 +57,10 @@ namespace RaceGame
             remove = IsCollidingWith("Player");
             if (remove == true)
             {
-                (gun.GameNode.Parent).RemoveChild(gun.GameNode);
+                (gun.GameNode.Parent).RemoveChild(gun.GameNode.Name);
                 playerArmoury.AddGun(gun);
                 gun.GameNode.Dispose();
-                //Dispose();
+                Dispose();
                 // detach the gun model from current node and add it to player sub-scene-graph
                 // Call Dispose before break
             }

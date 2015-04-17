@@ -83,9 +83,10 @@ namespace RaceGame
             {
                 if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
                 {
+                    
                     isColliding = true;
                     System.Console.WriteLine("Oi");
-                    
+                    //c.colliderObj.SceneNode
                     Dispose();
                     break;
                 }

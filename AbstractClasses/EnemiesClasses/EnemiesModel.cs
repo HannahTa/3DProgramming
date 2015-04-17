@@ -50,26 +50,6 @@ namespace RaceGame
             this.gameNode = enemyNode1.GameNode;
         }
 
-        public void Update(FrameEvent evt)
-        {
-            remove = IsCollidingWith("Projectile");
-        }
-
-        public bool IsCollidingWith(string objName)
-        {
-            bool isColliding = false;
-            foreach (Contacts c in physObj.CollisionList)
-            {
-                if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
-                {
-                    isColliding = true;
-                    System.Console.WriteLine("Ow");
-
-                    Dispose();
-                    break;
-                }
-            }
-            return isColliding;
-        }
+        
     }
 }
