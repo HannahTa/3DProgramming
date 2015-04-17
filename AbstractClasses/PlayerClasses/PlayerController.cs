@@ -58,12 +58,8 @@ namespace RaceGame
 
             if (accellerate)
             {
-                move += move * 2;
+                move += move * 1.2f;
             }
-            //else
-            //{
-            //    move += move.NormalisedCopy * speed;
-            //}
 
             // Check the move field is no zero (Vector3.ZERO) and is not call the Move method from character
             if (move != Vector3.ZERO)

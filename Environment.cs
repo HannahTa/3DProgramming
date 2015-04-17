@@ -9,7 +9,6 @@ namespace RaceGame
     /// </summary>
     class Environment
     {
-        #region As in Demo 11
         Light light;                        // This field will contain a reference of a light
 
         SceneManager mSceneMgr;             // This field will contain a reference of the scene manages
@@ -29,21 +28,18 @@ namespace RaceGame
 
             Load();                                 // This method loads  the environment
         }
-        #endregion
         
         /// <summary>
         /// This method loads the environment
         /// </summary>
         private void Load()
         {
-            #region As in Demo 11
             SetLights();
             SetFog();
 
             SetSky();
             ground = new Ground(mSceneMgr);
             wall = new Wall(mSceneMgr);
-            #endregion
 
             Physics.AddBoundary(ground.Plane);
             Physics.AddBoundary(wall.Plane1);
@@ -52,7 +48,6 @@ namespace RaceGame
             Physics.AddBoundary(wall.Plane4);
         }
 
-        #region As in Demo 11
         /// <summary>
         /// This method dispose of any object instanciated in this class
         /// </summary>
@@ -116,6 +111,5 @@ namespace RaceGame
 
             //light.SetAttenuation(range, constantAttenuation, linearAttenuation, quadraticAttenuation); // Not applicable to directional ligths
         }
-        #endregion
     }
 }

@@ -13,6 +13,7 @@ namespace RaceGame
         private OverlayElement timeText;
         private OverlayElement gameOverText;
         private OverlayElement levelText;
+        private OverlayElement winText;
         private PanelOverlayElement gameOver;
 
         private OverlayElement healthBar;
@@ -32,13 +33,14 @@ namespace RaceGame
         private string score = "Score: ";
         private string timer = "Time Left: ";
         public string leveltxt = "Level 1";
+        public string win = "You won!";
 
         public string Leveltxt
         {
             set { leveltxt = value; }
         }
 
-        private string gameOverTime = "Time up! Game Over! Press Esc";
+        private string gameOverTime = "Game Over! Press Esc";
         private float clock = 180000;
 
         public string clockText;
@@ -83,7 +85,13 @@ namespace RaceGame
             levelText.Caption = leveltxt;
             levelText.Left = mWindow.Width * 0.3f;
             levelText.Top = mWindow.Height * 0.025f;
-            
+
+            winText = OverlayManager.Singleton.GetOverlayElement("WinText");
+            winText.Caption = win;
+            winText.Left = mWindow.Width * 0.5f;
+            winText.Top = mWindow.Height * 0.5f;
+            winText.Hide();
+
             gameOverText = OverlayManager.Singleton.GetOverlayElement("GameOverText");
             gameOverText.Caption = gameOverTime;
             gameOverText.Left = mWindow.Width * 0.5f;
@@ -183,10 +191,12 @@ namespace RaceGame
             healthBar.Width = hRatio * characterStats.Health.Value;
             shieldBar.Width = sRatio * characterStats.Shield.Value;
             scoreText.Caption = score + ((PlayerStats)characterStats).Score.Value;
-
-            timeText.Caption = timer + clockText;
-            clockText = convertTime(clock - time.Milliseconds);
-            if (clockText == "0:00")
+            
+            if (Tutorial.win == true)
+            {
+                winText.Show();
+            }
+            else if (clockText == "0:00")
             {
                 //clockText = "0:00";
                 gameOverText.Show();
@@ -194,13 +204,21 @@ namespace RaceGame
                 timeText.Hide();
                 scoreText.Hide();
                 healthBar.Hide();
-                
             }
-            //else
-            //{
-            //    clockText = convertTime(clock - time.Milliseconds);
-            //}
-            //System.Console.WriteLine(clockText);
+            else
+            {
+                clockText = convertTime(clock - time.Milliseconds);
+                timeText.Caption = timer + clockText;
+            }
+
+            if (characterStats.Lives.Value == 0)
+            {
+                gameOverText.Show();
+                gameOver.Show();
+                timeText.Hide();
+                scoreText.Hide();
+                healthBar.Hide();
+            }
 
             levelText.Caption = leveltxt;
         }
@@ -232,6 +250,7 @@ namespace RaceGame
             timeText.Dispose();
             time.Dispose();
             levelText.Dispose();
+            winText.Dispose();
             gameOverText.Dispose();
             gameOver.Dispose();
             panel.Dispose();

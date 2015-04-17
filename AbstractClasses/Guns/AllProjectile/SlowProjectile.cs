@@ -18,7 +18,7 @@ namespace RaceGame
             this.healthDamage = 10;
             this.shieldDamage = 5;
             this.speed = 100;
-            this.initialVelocity = speed * this.initialDirection;
+            //this.initialVelocity = speed * this.initialDirection;
 
             Load();
             //this.gameNode = sProjNode;

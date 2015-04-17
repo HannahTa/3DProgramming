@@ -8,7 +8,7 @@ namespace RaceGame
     abstract class Projectile:MovableElement
     {
         Timer time;
-        protected int maxTime = 2000;
+        protected int maxTime = 5000;
         protected Vector3 initialVelocity;
         protected float speed;
         protected Vector3 initialDirection;
@@ -83,10 +83,7 @@ namespace RaceGame
             {
                 if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
                 {
-                    
                     isColliding = true;
-                    System.Console.WriteLine("Oi");
-                    //c.colliderObj.SceneNode
                     Dispose();
                     break;
                 }

@@ -44,10 +44,7 @@ namespace RaceGame
                 playerArmoury.GunChanged = false;       // If was always true, would continualy change guns
             }
 
-            //if (model.RemoveMe == true)
-            //{
-
-            //}
+            model.RemoveMe = model.IsCollidingWith("Robot");
 
             base.Update(evt);
         }
@@ -55,7 +52,6 @@ namespace RaceGame
         public override void Shoot()
         {
             //base.Shoot();
-            //System.Console.WriteLine(playerArmoury.ActiveGun);
             if (playerArmoury.ActiveGun != null)
             {
                 playerArmoury.ActiveGun.Fire();

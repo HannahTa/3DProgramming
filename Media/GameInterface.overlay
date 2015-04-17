@@ -80,5 +80,17 @@ GameInterface
 			colour        1 1 1
 		}
 
+		element TextArea(WinText)
+		{
+			metrics_mode  pixels
+			left          512
+			top           6
+			font_name     BlueHighway
+			char_height   45
+			alignment     center
+			colour        0 1 1
+		}
+
+
 	}
 }

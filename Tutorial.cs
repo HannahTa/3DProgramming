@@ -10,27 +10,22 @@ namespace RaceGame
     class Tutorial : BaseApplication
     {
         GameInterface gameHMD;
-        //TimeIndex time;
 
         public int level = 1;
         int gemCount = 0;
+        int hitCount = 0;
         
-        //float mDistance = 0.0f;                 //Left to travel
-        //Vector3 mDirection = Vector3.ZERO;      //Direction the object is moving
-        //Vector3 mDestination = Vector3.ZERO;    //Detingation the object is moving towards
         static public LinkedList<Vector3> mWalkList = null;   //Containing the waypoints
 
         static public bool shoot;
         static public bool reload;
+        static public bool win = false;
 
         Environment environment;
         static public Player player;
-        //Enemies enemies;
 
         Score stat;
         PlayerStats playerStats;
-
-        //Gun slowGun;
 
         List<Gem> Gems;
         List<Gem> gemsToRemove;
@@ -80,9 +75,6 @@ namespace RaceGame
             // -Power-ups-
             stat = new Score();
 
-
-            
-
             Gems = new List<Gem>();
             gemsToRemove = new List<Gem>();
 
@@ -103,31 +95,10 @@ namespace RaceGame
             mWalkList = new LinkedList<Vector3>();
             mWalkList.AddLast(player.Position);
 
-            //enemies = new Enemies(mSceneMgr);
-
             for (int i = 0; i < 5; i++)
             {
                 AddGem(playerStats.Score);
             }
-
-            for (int i = 0; i < 5; i++)
-            {
-                AddPowerUp(playerStats.Health, playerStats.Shield, playerStats.Lives);
-            }
-
-            //AddCollGun();
-            
-            //enemies.Model.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 0, Mogre.Math.RangeRandom(-400, 400)));
-            //robots.Add(enemies);
-
-            // Enemies
-            //enemies = new Enemies(mSceneMgr);
-            
-            AddRobot();
-            //AddRobot();
-
-            //AddCollGun();
-            AddCollGun();
 
             // -Camera-
             cameraNode = mSceneMgr.CreateSceneNode();
@@ -161,10 +132,13 @@ namespace RaceGame
                 {
                     AddGem(playerStats.Score);
                 }
-                //AddGem(playerStats.Score);
+                for (int i = 0; i < 5; i++)
+                {
+                    AddPowerUp(playerStats.Health, playerStats.Shield, playerStats.Lives);
+                }
             }
 
-            if (gemCount == 11)
+            if (gemCount == 16)
             {
                 gemCount++;
                 level++;
@@ -177,7 +151,7 @@ namespace RaceGame
                 AddRobot();
             }
 
-            if (gemCount == 22)
+            if (gemCount == 27)
             {
                 gemCount++;
                 level++;
@@ -193,11 +167,11 @@ namespace RaceGame
                     AddRobot();
                 }
             }
-            //if (gameHMD.ClockText == "0:00")
-            //{
-            //    //this.DestroyScene();
-            //    //this.Shutdown();
-            //}
+
+            if (gemCount == 43)
+            {
+                win = true;
+            }
 
             if (shoot)
             {
@@ -216,7 +190,6 @@ namespace RaceGame
             foreach (Projectile p in projList)
             {
                 p.Update(evt);
-                //p.PhysObj.CollisionList
                 if (p.RemoveMe)
                 {
                     projListToRemove.Add(p);
@@ -302,10 +275,35 @@ namespace RaceGame
             }
             powerUpsToRemove.Clear();
 
-            gameHMD.Update(evt);
+            if (player.Model.RemoveMe)
+            {
+                if (playerStats.Shield.Value > 0 && hitCount == 0)
+                {
+                    playerStats.Shield.Decrease(5);
+                }
+                else if (playerStats.Health.Value == 0 && hitCount == 0)
+                {
+                    playerStats.Lives.Decrease(1);
+                    playerStats.Shield.Increase(100);
+                    playerStats.Health.Increase(100);
+                }
+                else if (playerStats.Health.Value > 0 && hitCount == 0)
+                {
+                    playerStats.Health.Decrease(5);
+                }
+                hitCount++;
+            }
+
             player.Update(evt);
-            
+            gameHMD.Update(evt);
+
+            if (hitCount == 50)
+            {
+                hitCount = 0;
+            }
+
             mCamera.LookAt(player.Position);
+
 
             shoot = false;
             reload = false;
@@ -316,8 +314,6 @@ namespace RaceGame
         /// </summary>
         protected override void DestroyScene()
         {
-            //enemies.Model.DisposeModel();
-            //player.Model.DisposeModel();
             base.DestroyScene();
             
             cameraNode.DetachAllObjects();
@@ -340,7 +336,6 @@ namespace RaceGame
 
             foreach (CollectableGun cg in collGuns)
             {
-                System.Console.WriteLine(cg.GameNode.Parent);
                 cg.Dispose();
             }
 
@@ -363,62 +358,6 @@ namespace RaceGame
             
             physics.Dispose();
         }
-
-        //protected bool nextLocation()
-        //{
-        //    if (mWalkList.Count == 0)
-        //        return false;
-        //    return true;
-        //}
-
-        //bool FrameStarted(FrameEvent evt)
-        //{
-        //    float move = enemies.Controller.Speed * (evt.timeSinceLastFrame);
-        //    mDistance -= move;
-
-        //    if (mDistance <= 0.0f)
-        //    {
-        //        if (!TurnNextLocation())
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        enemies.Model.GameNode.Translate(mDirection * move);
-        //    }
-
-        //    return true;
-        //}
-
-        //bool TurnNextLocation()
-        //{
-        //    if (nextLocation())
-        //    {
-        //        LinkedListNode<Vector3> tmp;
-        //        mDestination = mWalkList.First.Value;
-        //        tmp = mWalkList.First;
-        //        mWalkList.RemoveFirst();
-        //        mWalkList.AddLast(tmp);
-
-        //        mDirection = mDestination - enemies.Position;
-        //        mDistance = mDirection.Normalise();
-
-        //        Vector3 src = enemies.Model.GameNode.Orientation * Vector3.UNIT_X;
-
-        //        if ((1.0f + src.DotProduct(mDirection)) < 0.0001f)
-        //        {
-        //            enemies.Model.GameNode.Yaw(new Angle(180.0f));
-        //        }
-        //        else
-        //        {
-        //            Quaternion quat = src.GetRotationTo(mDirection);
-        //            enemies.Model.GameNode.Rotate(quat);
-        //        }
-        //        return true;
-        //    }
-        //    return false;
-        //}
 
         /**
          * Adds robots into the game, mwahaha!
@@ -465,7 +404,7 @@ namespace RaceGame
         {
             Gun slowGun = new SlowGun(mSceneMgr);
             CollectableGun CollGun = new CollectableGun(mSceneMgr, slowGun, player.PlayerArmoury);
-            CollGun.SetPosition(new Vector3(0, 0, 0));
+            CollGun.SetPosition(new Vector3(Mogre.Math.RangeRandom(-400, 400), 50, Mogre.Math.RangeRandom(-400, 400)));
             collGuns.Add(CollGun);
         }
 

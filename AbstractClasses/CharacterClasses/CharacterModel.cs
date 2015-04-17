@@ -43,7 +43,6 @@ namespace RaceGame
         {
             get
             {
-                //System.Console.WriteLine(forward + " Forward here!!");
                 forward = gameNode.LocalAxes.GetColumn(2).NormalisedCopy;
                 return forward;
             }
@@ -81,8 +80,6 @@ namespace RaceGame
                 if (c.colliderObj.ID == objName || c.collidingObj.ID == objName)
                 {
                     isColliding = true;
-                    //score.Increase(increase);
-                    Dispose();
                     break;
                 }
             }

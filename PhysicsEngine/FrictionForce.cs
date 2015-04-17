@@ -29,7 +29,7 @@ namespace PhysicsEng
             velocityDir = obj.Velocity;
             // Your Implementation here, force is inherited from the Force class as protected field
 			// force = ... ;
-
+            //velocityDir = velocityDir + Position;
             force = new Vector3( obj.FrictionCoeff * velocityDir.Normalise());
             //obj.
         }

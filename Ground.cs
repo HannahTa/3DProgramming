@@ -18,7 +18,6 @@ namespace RaceGame
             get { return plane; }
         }
 
-        #region As in Demo 11
         SceneManager mSceneMgr;
 
         Entity groundEntity;
@@ -40,7 +39,6 @@ namespace RaceGame
             groundHeight = 1000;
             CreateGround();
         }
-        #endregion
 
         /// <summary>
         /// This method set up the mesh for the ground and atthach it to the scenegraph
@@ -58,7 +56,6 @@ namespace RaceGame
             groundEntity.SetMaterialName("Ground");
         }
 
-        #region As in Demo 11
         /// <summary>
         /// This method disposes of the scene node and enitity
         /// </summary>
@@ -69,6 +66,5 @@ namespace RaceGame
             groundNode.Dispose();
             groundEntity.Dispose();
         }
-        #endregion
     }
 }

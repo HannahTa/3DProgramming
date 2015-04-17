@@ -41,6 +41,7 @@ namespace RaceGame
         public override void Shoot()
         {
             base.Shoot();
+            
         }
 
 

@@ -59,7 +59,6 @@ namespace RaceGame
             {
                 playerController.Right = true;
                 displacements += new Vector3(0.1f, 0, 0);
-                //System.Console.WriteLine("InputManager forward - d");
             }
             else
             {
@@ -69,7 +68,6 @@ namespace RaceGame
             {
                 playerController.Forward = true;
                 displacements += new Vector3(0, 0, 0.1f);
-                //System.Console.WriteLine("InputManager forward - w");
             }
             else
             {
@@ -92,6 +90,15 @@ namespace RaceGame
             else
             {
                 playerController.Shoot = false;
+            }
+
+            if (mKeyboard.IsKeyDown(MOIS.KeyCode.KC_LSHIFT))
+            {
+                playerController.Accellerate = true;
+            }
+            else
+            {
+                playerController.Accellerate = false;
             }
             //if (mKeyboard.IsKeyDown(MOIS.KeyCode.KC_E)) // Swap guns here
             //{
@@ -139,6 +146,11 @@ namespace RaceGame
                         //Tutorial.reload = true;
                         break; // Reloading
                     }
+                //case MOIS.KeyCode.KC_LSHIFT:
+                //    {
+                //        Tutorial.shift = true;
+                //        break;
+                //    }
                 case MOIS.KeyCode.KC_ESCAPE:
                     {
                         return false;
